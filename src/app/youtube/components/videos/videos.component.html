@@ -1,0 +1,15 @@
+<div class="youtube-container">
+    <div class="row" *ngIf="(videos$ | async) as videos">
+        <div *ngFor="let video of videos" class="col-md-3 col-lg-3">
+            <mat-card class="youtube-card">
+                <iframe width="270" height="140" [src]='sanitizer.bypassSecurityTrustResourceUrl(getIFrameSrc(video.player.embedHtml))' frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <!-- <mat-card-content>
+                    <span class="video-title">{{video.snippet.title}}</span>
+                    <br/>
+                    <span class="channel-title">{{video.snippet.channelTitle}}</span>
+                </mat-card-content> -->
+            </mat-card>
+        </div>
+    </div>
+</div>
+<app-loader *ngIf="(loading$ | async)"></app-loader>

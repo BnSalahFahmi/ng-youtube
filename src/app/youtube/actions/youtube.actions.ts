@@ -8,6 +8,10 @@ export const VIEW_CHANNEL = '[Youtube Channel] view';
 export const VIEW_CHANNEL_SUCCESS = '[Youtube Channel] view success';
 export const VIEW_CHANNEL_FAIL = '[Youtube Channel] view fail';
 
+export const LOAD_VIDEOS = '[Youtube Videos] load';
+export const LOAD_VIDEOS_SUCCESS = '[Youtube Videos] load Success';
+export const LOAD_VIDEOS_FAIL = '[Youtube Videos] load Fail';
+
 /**
  * Load Channels Actions
  */
@@ -53,8 +57,28 @@ export class ViewChannelFail implements Action {
 
 }
 
+/**
+ * Load Videos Actions
+ */
+export class LoadVideos implements Action {
+    readonly type = LOAD_VIDEOS;
+}
+
+export class LoadVideosSuccess implements Action {
+    readonly type = LOAD_VIDEOS_SUCCESS;
+
+    constructor(public payload: any) { }
+}
+
+export class LoadVideosFail implements Action {
+    readonly type = LOAD_VIDEOS_FAIL;
+
+    constructor(public payload: any) { }
+}
+
 
 
 // export a new type that represents the youtube actions 
 export type ActionType = LoadChannels | LoadChannelsSuccess | LoadChannelsFail |
-ViewChannel | ViewChannelSuccess | ViewChannelFail;
+ViewChannel | ViewChannelSuccess | ViewChannelFail | 
+LoadVideos | LoadVideosSuccess | LoadVideosFail;

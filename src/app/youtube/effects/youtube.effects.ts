@@ -15,7 +15,7 @@ export class YoutubeEffects {
 
     }
 
-    /**
+   /**
    * Load Channels effects
    *
    * @memberof ChannelsEffects
@@ -40,4 +40,20 @@ export class YoutubeEffects {
             of(new youtubeActions.ViewChannelFail({ error: err.message }))
         )
     );
+
+    /**
+   * Load Videos effects
+   *
+   * @memberof VideosEffects
+   */
+  @Effect()
+  loadVideos = this.actions$.pipe(
+      ofType(youtubeActions.LOAD_VIDEOS),
+      mergeMap(() => this.youtubeService.fetchVideos()),
+      map(videos => new youtubeActions.LoadVideosSuccess(videos)),
+      catchError(err =>
+          of(new youtubeActions.LoadVideosFail({ error: err.message }))
+      )
+  );
+
 }

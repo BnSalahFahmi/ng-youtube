@@ -25,4 +25,7 @@ export class YoutubeService {
     return this.http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&channelId=" + channelId + "&key=" + this._youtube_api_key);
   }
 
+  fetchVideos() {
+    return this.http.get("https://www.googleapis.com/youtube/v3/videos?part=player&chart=mostPopular&maxResults=10&key=AIzaSyB3F3Y2IoEggZAlKm61b_jV51fvZFrwp94");
+  }
 }

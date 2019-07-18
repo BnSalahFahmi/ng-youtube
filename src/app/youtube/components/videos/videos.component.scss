@@ -1,0 +1,31 @@
+.youtube-container {
+    margin: 80px 40px;
+}
+
+.youtube-card {
+    box-shadow: none !important;
+    background-color: #fafafa !important;
+
+    .mat-card-content {
+        margin: 0px -16px !important;
+
+        .info{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            max-height: 65px; 
+    
+            .video-title {
+                font-weight: 600 !important;
+            }
+        }
+        .channel-title {
+            color: #757575 !important;
+        }
+    }
+    
+}
+
+.youtube-img-card {
+    border-radius: 0px !important;
+}
