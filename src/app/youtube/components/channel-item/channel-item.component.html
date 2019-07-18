@@ -1,0 +1,13 @@
+<div class="" *ngIf="(channel$ | async) as channel">
+    <img class="cover-photo" src="../../../../assets/img/cover-youtube.jpeg" />
+    <div class="profile">
+            <img class="profile-photo" src="{{channel.snippet.thumbnails.default.url}}"/>
+            <b class="channel-name">{{channel.snippet.title}}</b>
+            <mat-tab-group>
+                <mat-tab label="Acceuil"> Not implemented yet </mat-tab>
+                <mat-tab label="Videos"> Not implemented yet </mat-tab>
+                <mat-tab label="Playlists"> Not implemented yet </mat-tab>
+                <mat-tab label="A propos"> Not implemented yet </mat-tab>
+            </mat-tab-group>
+    </div>
+</div>

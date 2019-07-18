@@ -29,4 +29,15 @@ export class YoutubeEffects {
             of(new youtubeActions.LoadChannelsFail({ error: err.message }))
         )
     );
+
+    @Effect()
+    getBook = this.actions$.pipe(
+        ofType(youtubeActions.VIEW_CHANNEL),
+        map((action: youtubeActions.ViewChannel) => action.payload),
+        mergeMap(channelId => this.youtubeService.getChannel(channelId)),
+        map(channel => new youtubeActions.ViewChannelSuccess(channel)),
+        catchError(err =>
+            of(new youtubeActions.ViewChannelFail({ error: err.message }))
+        )
+    );
 }

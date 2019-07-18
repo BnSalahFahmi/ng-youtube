@@ -8,11 +8,13 @@ import { reducers } from './reducers/index';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { YoutubeEffects } from './effects/youtube.effects';
+import { ChannelItemComponent } from '@app/youtube/components/channel-item/channel-item.component';
 
 
 @NgModule({
   declarations: [
-    ChannelListComponent
+    ChannelListComponent,
+    ChannelItemComponent
   ],
   imports: [
     CommonModule,

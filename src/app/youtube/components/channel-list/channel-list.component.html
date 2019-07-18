@@ -1,7 +1,7 @@
 <div class="youtube-container">
     <div class="row" *ngIf="(channels$ | async) as channels">
         <div *ngFor="let channel of channels" class="col-md-3 col-lg-2">
-            <mat-card class="youtube-card">
+            <mat-card class="youtube-card" (click)="ViewChannel(channel.snippet.channelId)">
                 <img mat-card-image class="youtube-img-channel" src="{{channel.snippet.thumbnails.default.url}}">
                 <mat-card-content>
                     <span class="item-title">{{channel.snippet.title}}</span>

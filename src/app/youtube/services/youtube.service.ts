@@ -14,12 +14,15 @@ export class YoutubeService {
 
   constructor(private http: HttpClient) {
     // keep in cache the last result  
-    this.list$ = this.http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=channel&key=" + this._youtube_api_key).pipe(map(response => response),publishLast(),refCount(),);
-
+    this.list$ = this.http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=channel&key=" + this._youtube_api_key).pipe(map(response => response),publishLast(),refCount());
   }
 
   fetchChannels() {
     return this.http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=channel&key=" + this._youtube_api_key);
+  }
+
+  getChannel(channelId) {
+    return this.http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&channelId=" + channelId + "&key=" + this._youtube_api_key);
   }
 
 }

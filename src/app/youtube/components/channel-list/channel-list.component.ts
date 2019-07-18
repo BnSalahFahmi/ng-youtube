@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromYoutube from './../../reducers/index';
 import * as youtubeActions from './../../actions/youtube.actions';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'channel-list',
@@ -17,7 +17,7 @@ export class ChannelListComponent implements OnInit {
   channels$: Observable<any>;
   loading$: Observable<boolean>;
 
-  constructor(private store: Store<fromYoutube.State>, private youtubeService : YoutubeService) {
+  constructor(private store: Store<fromYoutube.State>, private youtubeService : YoutubeService, private route: ActivatedRoute, private router: Router) {
     this.channels$ = this.store.select(fromYoutube.getChannels);
     this.loading$ = this.store.select(fromYoutube.getLoading);
   }
@@ -25,6 +25,11 @@ export class ChannelListComponent implements OnInit {
   ngOnInit() {
     // Dispatch the load action
     this.store.dispatch(new youtubeActions.LoadChannels());
+  }
+
+  ViewChannel(channelId) {
+    this.store.dispatch(new youtubeActions.ViewChannel(channelId));
+    this.router.navigate([ '../channels', channelId ], { relativeTo: this.route });
   }
 
 }

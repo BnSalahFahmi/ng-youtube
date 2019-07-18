@@ -26,3 +26,6 @@ export const getChannels = createSelector(getYoutube,
 
 export const getLoading = createSelector(getYoutube,
     (state: fromYoutube.State) => state.loading);
+
+export const getSelectedChannel = createSelector(getYoutube,
+    (state: fromYoutube.State) => state.selectedChannel);
