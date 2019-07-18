@@ -11,6 +11,12 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { DashboardComponent } from './core/components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers, metaReducers } from './core/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +31,12 @@ import { CoreModule } from './core/core.module';
     HttpClientModule,
     AppRoutingModule,
     CoreModule.forRoot(),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({
+      name: 'NgRx Store DevTools',
+      logOnly: environment.production,
+    }),
     SharedModule,
     FontAwesomeModule
   ],

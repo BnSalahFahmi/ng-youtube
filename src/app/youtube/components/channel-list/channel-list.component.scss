@@ -1,0 +1,32 @@
+.youtube-container {
+    margin: 40px;
+}
+
+.youtube-card {
+    box-shadow: none !important;
+    background-color: #fafafa !important;
+    text-align: center;
+    outline: none;
+    .mat-card-content {
+        margin: 0px -16px !important;
+        text-align: center;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    .item-title {
+        font-weight: 600;
+    }
+}
+
+.youtube-card:hover img {
+    transform: scale(1.1);
+}
+
+.youtube-img-channel {
+    width: 100px;
+    height: 100px;
+    border-radius: 50% !important;
+    border: 2px solid #81D4FA;
+    padding: 2px;
+}

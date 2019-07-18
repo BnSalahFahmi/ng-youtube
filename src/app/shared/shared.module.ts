@@ -60,8 +60,8 @@ import {
   faInstagram,
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
-import { AnimationsService } from './animations/animations.service';
 import { LoaderComponent } from './components/loader/loader.component';
+import { AnimationsService } from './animations/animations.service';
 
 library.add(
   faBars,

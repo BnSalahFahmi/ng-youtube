@@ -4,7 +4,9 @@ $white: #eee;
 $width: 100px;
 
 .loader {
-  position: relative;
+  position: fixed;
+  top: 40%;
+  left:45%;
   margin: 0 auto;
   width: $width;
   &:before {
