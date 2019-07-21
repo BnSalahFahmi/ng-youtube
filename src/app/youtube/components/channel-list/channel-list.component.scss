@@ -4,6 +4,7 @@
 
 .youtube-card {
     box-shadow: none !important;
+    background-color: transparent !important;
     text-align: center;
     outline: none;
     .mat-card-content {
@@ -28,8 +29,4 @@
     border-radius: 50% !important;
     border: 2px solid #81D4FA;
     padding: 2px;
-}
-
-mat-card {
-    background-color: transparent !important;
 }
