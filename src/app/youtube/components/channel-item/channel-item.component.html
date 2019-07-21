@@ -17,9 +17,10 @@
             <div class="col-lg-9">
                     <div class="stat-val">
                             <mat-tab-group (selectedTabChange)="onTabClick($event, channel.data.snippet.channelId)">
-                                    <mat-tab label="Acceuil">
-                                        <label>{{channel.data.snippet.title}}</label>
-                                        <br/>
+                                    <mat-tab label="Home">
+                                        <label class="float-left"><span class="label-info">Name : </span> <span class="label-val">{{channel.data.snippet.title}}</span></label>
+                                        <label class="float-right"><span class="label-info">Publish Date : </span> <span class="label-val" style="margin-right: 12px;">{{channel.data.snippet.publishedAt | date}}</span></label>
+                                        <hr class="hidden-separator">
                                         <p>
                                             {{channel.data.snippet.description}}
                                         </p>

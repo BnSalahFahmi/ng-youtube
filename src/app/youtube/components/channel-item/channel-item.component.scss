@@ -82,4 +82,21 @@
 
 p {
     font-size: 14px;
+    text-align: left;
+    margin: 0px;
+}
+
+.label-info {
+    font-size: 14px;
+    color: #90949c;
+}
+
+.label-val {
+    font-size: 14px;
+}
+
+.hidden-separator{
+    margin-top: 35px;
+    width: 90%;
+    border-width: 0px;
 }

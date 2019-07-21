@@ -52,7 +52,7 @@ export class ChannelItemComponent implements OnInit, AfterViewInit {
   }
 
   onTabClick(event, channelId) {
-    if (event.tab.textLabel == "Acceuil") {
+    if (event.tab.textLabel == "Home") {
       this.store.dispatch(new youtubeActions.LoadChannelStatistics(channelId));
     } else if (event.tab.textLabel == "Videos") {
       this.store.dispatch(new youtubeActions.LoadChannelVideos(channelId));
