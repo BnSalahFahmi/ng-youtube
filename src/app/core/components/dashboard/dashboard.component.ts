@@ -15,4 +15,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  onNavigate(url: string){
+    var win = window.open(url, '_blank');
+    win.opener = null;
+    win.focus();
+  }
+
 }
