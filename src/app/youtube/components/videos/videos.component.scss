@@ -28,3 +28,34 @@
 .youtube-img-card {
     border-radius: 0px !important;
 }
+
+.video-infos {
+    font-size: 11px;
+    font-weight: 400;
+    position: absolute;
+    bottom: -7px;
+    height: 30px;
+    background-color: rgba(0,0,0,.45);
+    line-height: 2.5;
+    width: 90.8%;
+    top: 126px;
+    color: #FFF;
+    text-align: center;
+}
+
+.left {
+    font-size: 12px;
+    float: left;
+    margin-left: 5px;
+}
+
+.center {
+    font-size: 12px;
+    margin-left: -15px;
+}
+
+.right {
+    font-size: 12px;
+    float: right;
+    margin-right: 5px;
+}

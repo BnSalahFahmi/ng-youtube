@@ -3,6 +3,11 @@
         <div *ngFor="let video of videos" class="col-md-3 col-lg-3">
             <mat-card class="youtube-card">
                 <iframe width="270" height="140" [src]='sanitizer.bypassSecurityTrustResourceUrl(getIFrameSrc(video.player.embedHtml))' frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <div class="video-infos">
+                    <span class="left"><fa-icon class="with-margin-right" icon="thumbs-up"></fa-icon> {{video.statistics.likeCount}}</span>
+                    <span class="center"><fa-icon class="with-margin-right" icon="eye"></fa-icon> {{video.statistics.viewCount}}</span>
+                    <span class="right"><fa-icon class="with-margin-right" icon="comment-alt"></fa-icon> {{video.statistics.commentCount}}</span>
+                </div>
             </mat-card>
         </div>
     </div>

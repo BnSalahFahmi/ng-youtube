@@ -56,7 +56,10 @@ import {
   faGlobeEurope,
   faSubscript,
   faCommentAlt,
-  faEye
+  faEye,
+  faAddressCard,
+  faInfoCircle,
+  faThumbsUp
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faGithub,
@@ -106,7 +109,10 @@ library.add(
   faGlobeEurope,
   faCommentAlt,
   faSubscript,
-  faEye
+  faEye,
+  faAddressCard,
+  faInfoCircle,
+  faThumbsUp
 );
 
 @NgModule({
