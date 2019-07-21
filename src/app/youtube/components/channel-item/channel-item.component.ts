@@ -19,20 +19,34 @@ export class ChannelItemComponent implements OnInit, AfterViewInit {
   videos$: Observable<any>;
   playlists$: Observable<any>;
   loading$: Observable<boolean>;
+  commentCount: number = 0;
+  subscriberCount: number = 0;
+  videoCount: number = 0;
+  viewCount: number = 0;
 
   constructor(private store: Store<fromYoutube.State>, private youtubeService: YoutubeService, private route: ActivatedRoute, public sanitizer: DomSanitizer) {
     this.channel$ = this.store.select(fromYoutube.getSelectedChannel);
     this.loading$ = this.store.select(fromYoutube.getLoading);
-    this.stats$ = this.store.select(fromYoutube.getSelectedChannelStats);
     this.videos$ = this.store.select(fromYoutube.getSelectedChannelVideos);
     this.playlists$ = this.store.select(fromYoutube.getSelectedChannelPlaylists);
+
+    this.store.select(fromYoutube.getSelectedChannelStats).subscribe(
+      (data) => {
+        if (data && (data as any).statistics) {
+          this.commentCount = (data as any).statistics.commentCount;;
+          this.subscriberCount = (data as any).statistics.subscriberCount;
+          this.videoCount = (data as any).statistics.videoCount;
+          this.viewCount = (data as any).statistics.viewCount;
+        }
+      }
+    );
   }
 
   ngOnInit() {
-    
+
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     const channelId = this.route.snapshot.paramMap.get('id');
     this.store.dispatch(new youtubeActions.LoadChannelStatistics(channelId));
   }

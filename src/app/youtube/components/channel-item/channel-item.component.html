@@ -5,13 +5,13 @@
         <b class="channel-name">{{channel.data.snippet.title}}</b>
         <div class="row">
             <div class="col-lg-3">
-                <div class="stat" *ngIf="(stats$ | async) as stats">
+                <div class="stat">
                     <label class="label-info"><fa-icon class="with-margin-right globe-europe" icon="globe-europe"></fa-icon> Infos</label>
                     <hr class="separator">
-                    <span class="info-label"><fa-icon class="with-margin-right" icon="comment-alt"></fa-icon> Comments : </span> <span class="info-val">{{stats.statistics.commentCount}}</span><br/>
-                    <span class="info-label"><fa-icon class="with-margin-right" icon="subscript"></fa-icon> Subscribers : </span> <span class="info-val">{{stats.statistics.subscriberCount}}</span><br/>
-                    <span class="info-label"><fa-icon class="with-margin-right" icon="video"></fa-icon> Videos : </span> <span class="info-val">{{stats.statistics.videoCount}}</span><br/>
-                    <span class="info-label"><fa-icon class="with-margin-right" icon="eye"></fa-icon> Views : </span> <span class="info-val">{{stats.statistics.viewCount}}</span><br/>
+                    <span class="info-label"><fa-icon class="with-margin-right" icon="comment-alt"></fa-icon> Comments : </span> <span class="info-val">{{commentCount}}</span><br/>
+                    <span class="info-label"><fa-icon class="with-margin-right" icon="subscript"></fa-icon> Subscribers : </span> <span class="info-val">{{subscriberCount}}</span><br/>
+                    <span class="info-label"><fa-icon class="with-margin-right" icon="video"></fa-icon> Videos : </span> <span class="info-val">{{videoCount}}</span><br/>
+                    <span class="info-label"><fa-icon class="with-margin-right" icon="eye"></fa-icon> Views : </span> <span class="info-val">{{viewCount}}</span><br/>
                 </div>
             </div>
             <div class="col-lg-9">
