@@ -7,7 +7,7 @@
 body{
     font-family: 'Roboto', 'Noto', sans-serif;
     margin: 0px;
-    background: #fafafa;
+    background: #e9ebee;
 }
 
 ::-webkit-scrollbar {
@@ -23,4 +23,25 @@ body{
 ::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background-color: rgba(#607d8b, .4);
+}
+
+.mat-tab-group {
+    z-index: 10 !important;
+}
+
+.mat-tab-header {
+    position: fixed;
+    z-index: 2;
+    border: 1px solid #dddfe2;
+    background: #FFF;
+}
+
+.mat-tab-body {
+    margin: 10px !important;
+    z-index: 10 !important;
+}
+
+.mat-tab-label-content {
+    color: #385898;
+    font-weight: 600;
 }

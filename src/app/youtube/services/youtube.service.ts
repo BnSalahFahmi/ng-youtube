@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {refCount, publishLast, map} from 'rxjs/operators';
+import { refCount, publishLast, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class YoutubeService {
 
   constructor(private http: HttpClient) {
     // keep in cache the last result  
-    this.list$ = this.http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=channel&key=" + this._youtube_api_key).pipe(map(response => response),publishLast(),refCount());
+    this.list$ = this.http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=channel&key=" + this._youtube_api_key).pipe(map(response => response), publishLast(), refCount());
   }
 
   fetchChannels() {
@@ -26,6 +26,19 @@ export class YoutubeService {
   }
 
   fetchVideos() {
-    return this.http.get("https://www.googleapis.com/youtube/v3/videos?part=player&chart=mostPopular&maxResults=10&key=AIzaSyB3F3Y2IoEggZAlKm61b_jV51fvZFrwp94");
+    return this.http.get("https://www.googleapis.com/youtube/v3/videos?part=player&chart=mostPopular&maxResults=50&key=" + this._youtube_api_key);
   }
+
+  fetchChannelStatistics(channelId) {
+    return this.http.get("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=" + channelId + "&key=" + this._youtube_api_key);
+  }
+
+  fetchChannelVideos(channelId) {
+    return this.http.get("https://www.googleapis.com/youtube/v3/videos?part=player&chart=mostPopular&maxResults=50&channelId=" + channelId + "&key=" + this._youtube_api_key);
+  }
+
+  fetchChannelPlaylists(channelId) {
+    return this.http.get("https://www.googleapis.com/youtube/v3/playlists?part=player&channelId=" + channelId + "&maxResults=50&key=" + this._youtube_api_key);
+  }
+
 }

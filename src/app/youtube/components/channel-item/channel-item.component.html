@@ -1,13 +1,51 @@
 <div class="" *ngIf="(channel$ | async) as channel">
     <img class="cover-photo" src="../../../../assets/img/cover-youtube.jpeg" />
     <div class="profile">
-            <img class="profile-photo" src="{{channel.snippet.thumbnails.default.url}}"/>
-            <b class="channel-name">{{channel.snippet.title}}</b>
-            <mat-tab-group>
-                <mat-tab label="Acceuil"> Not implemented yet </mat-tab>
-                <mat-tab label="Videos"> Not implemented yet </mat-tab>
-                <mat-tab label="Playlists"> Not implemented yet </mat-tab>
-                <mat-tab label="A propos"> Not implemented yet </mat-tab>
-            </mat-tab-group>
+        <img class="profile-photo" src="{{channel.data.snippet.thumbnails.default.url}}" />
+        <b class="channel-name">{{channel.data.snippet.title}}</b>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="stat" *ngIf="(stats$ | async) as stats">
+                    <label class="label-info"><fa-icon class="with-margin-right globe-europe" icon="globe-europe"></fa-icon> Infos</label>
+                    <hr class="separator">
+                    <span class="info-label"><fa-icon class="with-margin-right" icon="comment-alt"></fa-icon> Comments : </span> <span class="info-val">{{stats.statistics.commentCount}}</span><br/>
+                    <span class="info-label"><fa-icon class="with-margin-right" icon="subscript"></fa-icon> Subscribers : </span> <span class="info-val">{{stats.statistics.subscriberCount}}</span><br/>
+                    <span class="info-label"><fa-icon class="with-margin-right" icon="video"></fa-icon> Videos : </span> <span class="info-val">{{stats.statistics.videoCount}}</span><br/>
+                    <span class="info-label"><fa-icon class="with-margin-right" icon="eye"></fa-icon> Views : </span> <span class="info-val">{{stats.statistics.viewCount}}</span><br/>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                    <div class="stat-val">
+                            <mat-tab-group (selectedTabChange)="onTabClick($event, channel.data.snippet.channelId)">
+                                    <mat-tab label="Acceuil">
+                                        <label>{{channel.data.snippet.title}}</label>
+                                        <br/>
+                                        <p>
+                                            {{channel.data.snippet.description}}
+                                        </p>
+                                    </mat-tab>
+                                    <mat-tab label="Videos">
+                                        <div class="row" *ngIf="(videos$ | async) as channel_videos">
+                                            <div *ngFor="let video of channel_videos" class="col-md-3 col-lg-3">
+                                                <iframe width="150" height="80" [src]='sanitizer.bypassSecurityTrustResourceUrl(getIFrameSrc(video.player.embedHtml))' frameborder="0"
+                                                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                        -
+                                    </mat-tab>
+                                    <mat-tab label="Playlists">
+                                            <div class="row" *ngIf="(playlists$ | async) as channel_playlists">
+                                                    <div *ngFor="let playlist of channel_playlists" class="col-md-3 col-lg-3">
+                                                        <iframe width="150" height="80" [src]='sanitizer.bypassSecurityTrustResourceUrl(getIFrameSrc(playlist.player.embedHtml))' frameborder="0"
+                                                            webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                                    </div>
+                                                </div>
+                                                -
+                                    </mat-tab>
+                                </mat-tab-group>
+                    </div>
+            </div>
+        </div>
     </div>
 </div>
+<app-loader *ngIf="(loading$ | async)"></app-loader>

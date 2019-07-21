@@ -28,7 +28,6 @@ export class VideosComponent implements OnInit {
 
   getIFrameSrc(embedHtml: string) {
     let url = embedHtml.split('"')[5];
-    debugger;
     return "https:" + url;
   }
 

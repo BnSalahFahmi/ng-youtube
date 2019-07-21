@@ -32,3 +32,12 @@ export const getSelectedChannel = createSelector(getYoutube,
 
 export const getVideos = createSelector(getYoutube,
     (state: fromYoutube.State) => state.videos);
+
+export const getSelectedChannelStats = createSelector(getYoutube,
+    (state: fromYoutube.State) => state.selectedChannel.statistics);
+
+export const getSelectedChannelVideos = createSelector(getYoutube,
+    (state: fromYoutube.State) => state.selectedChannel.videos);
+
+export const getSelectedChannelPlaylists = createSelector(getYoutube,
+    (state: fromYoutube.State) => state.selectedChannel.playlists);

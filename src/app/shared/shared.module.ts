@@ -51,7 +51,12 @@ import {
   faMusic,
   faVideo,
   faTv,
-  faTheaterMasks
+  faTheaterMasks,
+  faFilm,
+  faGlobeEurope,
+  faSubscript,
+  faCommentAlt,
+  faEye
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faGithub,
@@ -96,7 +101,12 @@ library.add(
   faMusic,
   faVideo,
   faTv,
-  faTheaterMasks
+  faTheaterMasks,
+  faFilm,
+  faGlobeEurope,
+  faCommentAlt,
+  faSubscript,
+  faEye
 );
 
 @NgModule({

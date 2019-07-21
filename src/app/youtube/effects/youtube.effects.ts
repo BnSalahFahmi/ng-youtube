@@ -15,11 +15,11 @@ export class YoutubeEffects {
 
     }
 
-   /**
-   * Load Channels effects
-   *
-   * @memberof ChannelsEffects
-   */
+    /**
+    * Load Channels effects
+    *
+    * @memberof ChannelsEffects
+    */
     @Effect()
     loadChannels = this.actions$.pipe(
         ofType(youtubeActions.LOAD_CHANNELS),
@@ -31,7 +31,7 @@ export class YoutubeEffects {
     );
 
     @Effect()
-    getBook = this.actions$.pipe(
+    getChannel = this.actions$.pipe(
         ofType(youtubeActions.VIEW_CHANNEL),
         map((action: youtubeActions.ViewChannel) => action.payload),
         mergeMap(channelId => this.youtubeService.getChannel(channelId)),
@@ -46,14 +46,60 @@ export class YoutubeEffects {
    *
    * @memberof VideosEffects
    */
-  @Effect()
-  loadVideos = this.actions$.pipe(
-      ofType(youtubeActions.LOAD_VIDEOS),
-      mergeMap(() => this.youtubeService.fetchVideos()),
-      map(videos => new youtubeActions.LoadVideosSuccess(videos)),
-      catchError(err =>
-          of(new youtubeActions.LoadVideosFail({ error: err.message }))
-      )
-  );
+    @Effect()
+    loadVideos = this.actions$.pipe(
+        ofType(youtubeActions.LOAD_VIDEOS),
+        mergeMap(() => this.youtubeService.fetchVideos()),
+        map(videos => new youtubeActions.LoadVideosSuccess(videos)),
+        catchError(err =>
+            of(new youtubeActions.LoadVideosFail({ error: err.message }))
+        )
+    );
+
+    /**
+   * Load Channel Statistics effects
+   *
+   * @memberof ChannelStatisticsEffects
+   */
+    @Effect()
+    loadChannelStatistics = this.actions$.pipe(
+        ofType(youtubeActions.LOAD_CHANNEL_STATISTICS),
+        mergeMap((action) => this.youtubeService.fetchChannelStatistics((action as any).payload)),
+        map(stat => new youtubeActions.LoadChannelStatisticsSuccess(stat)),
+        catchError(err =>
+            of(new youtubeActions.LoadChannelStatisticsFail({ error: err.message }))
+        )
+    );
+
+
+    /**
+   * Load Channel Videos effects
+   *
+   * @memberof ChannelVideosEffects
+   */
+    @Effect()
+    loadChannelVideos = this.actions$.pipe(
+        ofType(youtubeActions.LOAD_CHANNEL_VIDEOS),
+        mergeMap((action) => this.youtubeService.fetchChannelVideos((action as any).payload)),
+        map(videos => new youtubeActions.LoadChannelVideosSuccess(videos)),
+        catchError(err =>
+            of(new youtubeActions.LoadChannelVideosFail({ error: err.message }))
+        )
+    );
+
+    /**
+   * Load Channel Playlists effects
+   *
+   * @memberof ChannelPlaylistsEffects
+   */
+    @Effect()
+    loadChannelPlaylists = this.actions$.pipe(
+        ofType(youtubeActions.LOAD_CHANNEL_PLAYLISTS),
+        mergeMap((action) => this.youtubeService.fetchChannelPlaylists((action as any).payload)),
+        map(playlists => new youtubeActions.LoadChannelPlaylistsSuccess(playlists)),
+        catchError(err =>
+            of(new youtubeActions.LoadChannelPlaylistsFail({ error: err.message }))
+        )
+    );
 
 }
