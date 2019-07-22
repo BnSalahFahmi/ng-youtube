@@ -33,7 +33,7 @@ export class ChannelItemComponent implements OnInit, AfterViewInit {
     this.store.select(fromYoutube.getSelectedChannelStats).subscribe(
       (data) => {
         if (data && (data as any).statistics) {
-          this.commentCount = (data as any).statistics.commentCount;;
+          this.commentCount = (data as any).statistics.commentCount;
           this.subscriberCount = (data as any).statistics.subscriberCount;
           this.videoCount = (data as any).statistics.videoCount;
           this.viewCount = (data as any).statistics.viewCount;
@@ -43,12 +43,12 @@ export class ChannelItemComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
+    const channelId = this.route.snapshot.paramMap.get('id');
+    this.store.dispatch(new youtubeActions.LoadChannelStatistics(channelId));
   }
 
   ngAfterViewInit() {
-    const channelId = this.route.snapshot.paramMap.get('id');
-    this.store.dispatch(new youtubeActions.LoadChannelStatistics(channelId));
+    
   }
 
   onTabClick(event, channelId) {
