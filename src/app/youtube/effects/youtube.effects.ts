@@ -23,7 +23,7 @@ export class YoutubeEffects {
     @Effect()
     loadChannels = this.actions$.pipe(
         ofType(youtubeActions.LOAD_CHANNELS),
-        mergeMap(() => this.youtubeService.fetchChannels()),
+        mergeMap((action: youtubeActions.LoadChannels) => this.youtubeService.fetchChannels(action.payload)),
         map(channels => new youtubeActions.LoadChannelsSuccess(channels)),
         catchError(err =>
             of(new youtubeActions.LoadChannelsFail({ error: err.message }))
@@ -49,7 +49,7 @@ export class YoutubeEffects {
     @Effect()
     loadVideos = this.actions$.pipe(
         ofType(youtubeActions.LOAD_VIDEOS),
-        mergeMap(() => this.youtubeService.fetchVideos()),
+        mergeMap((action: youtubeActions.LoadVideos) => this.youtubeService.fetchVideos(action.payload)),
         map(videos => new youtubeActions.LoadVideosSuccess(videos)),
         catchError(err =>
             of(new youtubeActions.LoadVideosFail({ error: err.message }))
@@ -64,7 +64,7 @@ export class YoutubeEffects {
     @Effect()
     loadChannelStatistics = this.actions$.pipe(
         ofType(youtubeActions.LOAD_CHANNEL_STATISTICS),
-        mergeMap((action) => this.youtubeService.fetchChannelStatistics((action as any).payload)),
+        mergeMap((action: youtubeActions.LoadChannelStatistics) => this.youtubeService.fetchChannelStatistics(action.payload)),
         map(stat => new youtubeActions.LoadChannelStatisticsSuccess(stat)),
         catchError(err =>
             of(new youtubeActions.LoadChannelStatisticsFail({ error: err.message }))
@@ -80,7 +80,7 @@ export class YoutubeEffects {
     @Effect()
     loadChannelVideos = this.actions$.pipe(
         ofType(youtubeActions.LOAD_CHANNEL_VIDEOS),
-        mergeMap((action) => this.youtubeService.fetchChannelVideos((action as any).payload)),
+        mergeMap((action: youtubeActions.LoadChannelVideos) => this.youtubeService.fetchChannelVideos(action.payload)),
         map(videos => new youtubeActions.LoadChannelVideosSuccess(videos)),
         catchError(err =>
             of(new youtubeActions.LoadChannelVideosFail({ error: err.message }))
@@ -95,7 +95,7 @@ export class YoutubeEffects {
     @Effect()
     loadChannelPlaylists = this.actions$.pipe(
         ofType(youtubeActions.LOAD_CHANNEL_PLAYLISTS),
-        mergeMap((action) => this.youtubeService.fetchChannelPlaylists((action as any).payload)),
+        mergeMap((action: youtubeActions.LoadChannelPlaylists) => this.youtubeService.fetchChannelPlaylists(action.payload)),
         map(playlists => new youtubeActions.LoadChannelPlaylistsSuccess(playlists)),
         catchError(err =>
             of(new youtubeActions.LoadChannelPlaylistsFail({ error: err.message }))

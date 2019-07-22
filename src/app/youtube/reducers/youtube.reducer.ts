@@ -2,19 +2,20 @@ import * as youtubeActions from './../actions/youtube.actions';
 import * as fromRoot from '../../core/reducers';
 import { Channel, initChannel } from '@app/youtube/models/channel.model';
 import { getSelectedChannel } from '@app/youtube/reducers';
+import { Pageable, initPageable } from '@app/youtube/models/pageable.model';
 
 export interface State {
     loading: boolean,
-    channels: any,
+    channels: Pageable<Channel>,
     selectedChannel: Channel,
-    videos: any
+    videos: Pageable<object>
 }
 
 export const initialState: State = {
     loading: false,
-    channels: [],
+    channels: initPageable(),
     selectedChannel: null,
-    videos: []
+    videos: initPageable()
 }
 
 export function reducer(state = initialState, action: youtubeActions.ActionType): State {
@@ -22,22 +23,36 @@ export function reducer(state = initialState, action: youtubeActions.ActionType)
         case youtubeActions.LOAD_CHANNELS:
             return { ...state, loading: true };
         case youtubeActions.LOAD_CHANNELS_SUCCESS:
-            return { ...state, channels: action.payload.items, loading: false };
+            let pageable = initPageable();
+            var newArray = [];
+            newArray.push.apply(newArray, state.channels.items);
+            newArray.push.apply(newArray, action.payload.items);
+            pageable.items = newArray;
+            pageable.nextPageToken = action.payload.nextPageToken;
+            pageable.resultsPerPage = action.payload.pageInfo.resultsPerPage;
+            pageable.totalResults = action.payload.pageInfo.totalResults;
+            return { ...state, channels: pageable, loading: false };
         case youtubeActions.VIEW_CHANNEL:
             return { ...state, loading: true };
         case youtubeActions.VIEW_CHANNEL_SUCCESS:
-            debugger;
             let channel = initChannel();
             channel.data = action.payload.items[0];
             return { ...state, selectedChannel: channel, loading: false };
         case youtubeActions.LOAD_VIDEOS:
             return { ...state, loading: true };
         case youtubeActions.LOAD_VIDEOS_SUCCESS:
-            return { ...state, videos: action.payload.items, loading: false };
+            var videos_pageable = initPageable();
+            var newArray = [];
+            newArray.push.apply(newArray, state.videos.items);
+            newArray.push.apply(newArray, action.payload.items);
+            videos_pageable.items = newArray;
+            videos_pageable.nextPageToken = action.payload.nextPageToken;
+            videos_pageable.resultsPerPage = action.payload.pageInfo.resultsPerPage;
+            videos_pageable.totalResults = action.payload.pageInfo.totalResults;
+            return { ...state, videos: videos_pageable, loading: false };
         case youtubeActions.LOAD_CHANNEL_STATISTICS:
             return { ...state, loading: true };
         case youtubeActions.LOAD_CHANNEL_STATISTICS_SUCCESS:
-            debugger;
             if (state.selectedChannel) {
                 let selectedChannel_1 = {
                     data: state.selectedChannel.data,

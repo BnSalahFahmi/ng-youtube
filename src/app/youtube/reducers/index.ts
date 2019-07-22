@@ -22,7 +22,10 @@ export const getYoutube = createSelector(getYoutubeState,
     (state: YoutubeState) => state.youtube);
 
 export const getChannels = createSelector(getYoutube,
-    (state: fromYoutube.State) => state.channels);
+    (state: fromYoutube.State) => state.channels.items);
+
+export const getChannelsNextPageToken = createSelector(getYoutube,
+    (state: fromYoutube.State) => state.channels.nextPageToken);
 
 export const getLoading = createSelector(getYoutube,
     (state: fromYoutube.State) => state.loading);
@@ -31,7 +34,10 @@ export const getSelectedChannel = createSelector(getYoutube,
     (state: fromYoutube.State) => state.selectedChannel);
 
 export const getVideos = createSelector(getYoutube,
-    (state: fromYoutube.State) => state.videos);
+    (state: fromYoutube.State) => state.videos.items);
+
+export const getVideosNextPageToken = createSelector(getYoutube,
+    (state: fromYoutube.State) => state.videos.nextPageToken);
 
 export const getSelectedChannelStats = createSelector(getYoutube,
     (state: fromYoutube.State) => state.selectedChannel ? state.selectedChannel.statistics : {});

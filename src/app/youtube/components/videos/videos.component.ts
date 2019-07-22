@@ -23,7 +23,7 @@ export class VideosComponent implements OnInit {
 
   ngOnInit() {
     // Dispatch the load action
-    this.store.dispatch(new youtubeActions.LoadVideos());
+    this.store.dispatch(new youtubeActions.LoadVideos(null));
   }
 
   getIFrameSrc(embedHtml: string) {

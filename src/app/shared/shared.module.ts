@@ -70,6 +70,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { LoaderComponent } from './components/loader/loader.component';
 import { AnimationsService } from './animations/animations.service';
+import { MoreDataSearchLoaderComponent } from './components/more-data-search-loader/more-data-search-loader.component';
 
 library.add(
   faBars,
@@ -139,7 +140,8 @@ library.add(
     FontAwesomeModule
   ],
   declarations: [
-    LoaderComponent
+    LoaderComponent,
+    MoreDataSearchLoaderComponent
   ],
   exports: [
     CommonModule,
@@ -166,7 +168,8 @@ library.add(
     MatDatepickerModule,
     MatNativeDateModule,
     FontAwesomeModule,
-    LoaderComponent
+    LoaderComponent,
+    MoreDataSearchLoaderComponent
   ],
   providers: [
     AnimationsService

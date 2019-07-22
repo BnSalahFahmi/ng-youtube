@@ -24,7 +24,7 @@ export class ChannelListComponent implements OnInit {
 
   ngOnInit() {
     // Dispatch the load action
-    this.store.dispatch(new youtubeActions.LoadChannels());
+    this.store.dispatch(new youtubeActions.LoadChannels(null));
   }
 
   ViewChannel(channelId) {

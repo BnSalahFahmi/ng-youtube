@@ -9,5 +9,5 @@
             </mat-card>
         </div>
     </div>
+    <more-data-search-loader *ngIf="(loading$ | async)"></more-data-search-loader>
 </div>
-<app-loader *ngIf="(loading$ | async)"></app-loader>

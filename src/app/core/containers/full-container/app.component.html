@@ -1,7 +1,7 @@
 <div class="global-container">
   <navbar></navbar>
   <div class="pages-body">
-    <div class="pages-content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
+    <div class="pages-content" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" (scrolled)="searchMore()" [scrollWindow]="false"  [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
       <router-outlet #o="outlet"></router-outlet>
     </div>
   </div>

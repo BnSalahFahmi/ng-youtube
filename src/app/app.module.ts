@@ -16,6 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers, metaReducers } from './core/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -23,13 +24,14 @@ import { environment } from '../environments/environment';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    DashboardComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    InfiniteScrollModule,
     CoreModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([]),

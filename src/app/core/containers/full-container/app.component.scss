@@ -2,6 +2,8 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .pages-body {
@@ -9,12 +11,14 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
     position: relative;
     -webkit-overflow-scrolling: touch;
 }
 
 .pages-content {
-    margin-top: 54px;
+    margin-top: 50px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }

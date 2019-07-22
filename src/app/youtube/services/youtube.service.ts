@@ -18,16 +18,22 @@ export class YoutubeService {
     
   }
 
-  fetchChannels() {
-    return this.http.get(`${this.base_url}search?&maxResults=${this.max_results}&type=channel&part=snippet&key=${env.YOUTUBE_API_KEY}`);
+  fetchChannels(pageToken : string) {
+    if(pageToken)
+      return this.http.get(`${this.base_url}search?pageToken=${pageToken}&maxResults=${this.max_results}&type=channel&part=snippet&key=${env.YOUTUBE_API_KEY}`);
+    else
+      return this.http.get(`${this.base_url}search?&maxResults=${this.max_results}&type=channel&part=snippet&key=${env.YOUTUBE_API_KEY}`);
   }
 
   getChannel(channelId) {
     return this.http.get(`${this.base_url}search?&type=channel&part=snippet&key=${env.YOUTUBE_API_KEY}`);
   }
 
-  fetchVideos() {
-    return this.http.get(`${this.base_url}videos?&maxResults=${this.max_results}&chart=mostPopular&part=snippet,player,statistics&key=${env.YOUTUBE_API_KEY}`);
+  fetchVideos(pageToken : string) {
+    if(pageToken)
+    return this.http.get(`${this.base_url}videos?pageToken=${pageToken}&maxResults=${this.max_results}&chart=mostPopular&part=snippet,player,statistics&key=${env.YOUTUBE_API_KEY}`);
+    else
+      return this.http.get(`${this.base_url}videos?&maxResults=${this.max_results}&chart=mostPopular&part=snippet,player,statistics&key=${env.YOUTUBE_API_KEY}`);
   }
 
   fetchChannelStatistics(channelId) {

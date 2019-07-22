@@ -29,6 +29,8 @@ export const LOAD_VIDEOS_FAIL = '[Youtube Videos] load channel videos fail';
  */
 export class LoadChannels implements Action {
     readonly type = LOAD_CHANNELS;
+
+    constructor(public payload: any) { }
 }
 
 export class LoadChannelsSuccess implements Action {
@@ -144,6 +146,8 @@ export class LoadChannelPlaylistsFail implements Action {
  */
 export class LoadVideos implements Action {
     readonly type = LOAD_VIDEOS;
+
+    constructor(public payload: any) { }
 }
 
 export class LoadVideosSuccess implements Action {
