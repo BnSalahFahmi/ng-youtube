@@ -30,7 +30,7 @@
         }
     }
     .video-player-full {
-        position: absolute;
+        position: fixed;
         top: 0px !important;
         width: 100%;
         z-index: 100000;

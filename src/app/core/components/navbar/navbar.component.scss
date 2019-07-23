@@ -30,11 +30,20 @@ mat-sidenav {
     width: 240px;
 }
 
-.mat-list-item:hover {
-    color: rgba(0,0,0,.87) !important;
+.mat-list-item {
+    padding-left: 10px;
+    &:hover {
+        color: rgba(0,0,0,.87) !important;
+    }
 }
 
 mat-drawer {
     position: fixed !important;
     width: 230px;
 }
+
+@media screen and (min-width : 1000px) {
+    .sidenav {
+      display:none;
+    }
+  }

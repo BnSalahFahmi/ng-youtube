@@ -16,6 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers, metaReducers } from './core/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { ProfileComponent } from '@app/core/components/profile/profile.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
@@ -24,7 +25,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
