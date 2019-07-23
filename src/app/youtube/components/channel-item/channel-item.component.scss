@@ -4,33 +4,36 @@
 
 .cover-photo {
     width: 100%;
-    height: 260px;
+    height: 230px;
     border-bottom: 1px solid #dddfe2;
 }
 
-.profile-photo {
-    width: 200px;
-    height:200px;
-    border-radius: 50%;
+.infos {
     margin-top: -150px;
+}
+
+.profile-photo {
+    width: 190px;
+    height:190px;
+    border-radius: 50%;
     margin-left: 50px;
     border: 2px solid #eee;
 }
 
 .mat-tab-group {
-    margin: -50px 0px 0px 0px;
+    margin: -71px 0px 0px 0px;
 }
 
 .channel-name {
-    margin-top: -55px;
+    margin-top: 90px;
     margin-left: 20px;
-    position: absolute;
     font-size: 25px;
     font-family: 'Roboto', 'Arial', sans-serif !important;
+    color: #FFF;
 }
 
 .stat {
-    height: 200px;
+    height: 150px;
     width: 280px;
     background-color: #FFF;
     margin-left: auto;
@@ -47,7 +50,7 @@
     margin-top: 30px;
     border-radius: 5px;
     border: 1px solid #dddfe2;
-    margin: 20px 15px;
+    margin: 20px 0px;
 }
 
 .info-label {
@@ -95,8 +98,91 @@ p {
     font-size: 14px;
 }
 
-.hidden-separator{
+.hidden-separator {
     margin-top: 35px;
     width: 90%;
     border-width: 0px;
 }
+
+.youtube-card {
+    box-shadow: none !important;
+}
+
+.video-infos {
+    font-size: 11px;
+    font-weight: 400;
+    position: absolute;
+    bottom: -7px;
+    height: 30px;
+    background-color: rgba(0,0,0,.45);
+    line-height: 2.5;
+    width: 89.5%;
+    top: 126px;
+    color: #FFF;
+    text-align: center;
+}
+
+.left {
+    font-size: 12px;
+    float: left;
+    margin-left: 5px;
+}
+
+.center {
+    font-size: 12px;
+    margin-left: -15px;
+}
+
+.right {
+    font-size: 12px;
+    float: right;
+    margin-right: 5px;
+}
+
+.video-container {
+    width: 250px; 
+    height: 140px;
+    &:hover {
+        box-shadow: inset 0 0 0 9999px rgba(0,0,0,.3) !important;
+        background-size: 130% !important;
+        cursor: pointer !important;
+        .video-play-button {
+            display: block !important;
+        }
+    }
+}
+
+.video-name-block {
+    font-size: 11px;
+    font-weight: 400;
+    position: absolute;
+    top: 16px;
+    height: 30px;
+    width: 89.5%;
+    background-color: rgba(0, 0, 0, 0.45);
+    line-height: 2.5;
+    color: #FFF;
+
+    .video-title-infos {
+        padding: 8px;
+        text-align: center;
+    }
+}
+
+.video-play-button {
+    position: absolute;
+    left: 42%;
+    top: 35%;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+}
+
+.tabs-container {
+    height: 48px;
+    background: #FFF;
+    margin-top: -39px;
+    border-bottom: 1px solid #dddfe2;
+}
+

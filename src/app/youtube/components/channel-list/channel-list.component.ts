@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import * as fromYoutube from './../../reducers/index';
 import * as youtubeActions from './../../actions/youtube.actions';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/shared/animations/route.animations';
 
 @Component({
   selector: 'channel-list',
@@ -13,6 +14,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChannelListComponent implements OnInit {
+
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
   channels$: Observable<any>;
   loading$: Observable<boolean>;
@@ -24,7 +27,7 @@ export class ChannelListComponent implements OnInit {
 
   ngOnInit() {
     // Dispatch the load action
-    this.store.dispatch(new youtubeActions.LoadChannels(null));
+    this.store.dispatch(new youtubeActions.LoadChannels());
   }
 
   ViewChannel(channelId) {

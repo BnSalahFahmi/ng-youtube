@@ -34,11 +34,25 @@ body{
     z-index: 2;
     border: 1px solid #dddfe2;
     background: #FFF;
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+
+.mat-tab-label:first-child {
+    border-left: 1px solid #dddfe2;
+}
+
+.mat-tab-label {
+    border-right: 1px solid #dddfe2;
 }
 
 .mat-tab-body {
     margin: 10px !important;
     z-index: 10 !important;
+}
+
+.mat-tab-body-wrapper {
+    background: #FFF !important;
 }
 
 .mat-tab-label-content {

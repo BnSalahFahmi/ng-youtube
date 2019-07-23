@@ -1,52 +1,91 @@
+<video-player [embedHTML]="selectedVideo"></video-player>
 <div class="" *ngIf="(channel$ | async) as channel">
-    <img class="cover-photo" src="../../../../assets/img/cover-youtube.jpeg" />
+    <img class="cover-photo" src="{{channel.data.brandingSettings.image.bannerImageUrl}}" />
     <div class="profile">
-        <img class="profile-photo" src="{{channel.data.snippet.thumbnails.default.url}}" />
-        <b class="channel-name">{{channel.data.snippet.title}}</b>
-        <div class="row">
+        <div class="infos">
+            <img class="profile-photo" src="{{channel.data.snippet.thumbnails.default.url}}" />
+            <b class="channel-name">{{channel.data.snippet.title}}</b>
+        </div>
+        <div class="tabs-container">
+
+        </div>
+        <div class="row" [ngClass]="routeAnimationsElements">
             <div class="col-lg-3">
                 <div class="stat">
-                    <label class="label-info"><fa-icon class="with-margin-right globe-europe" icon="globe-europe"></fa-icon> Infos</label>
+                    <label class="label-info">
+                        <fa-icon class="with-margin-right globe-europe" icon="globe-europe"></fa-icon> Infos</label>
                     <hr class="separator">
-                    <span class="info-label"><fa-icon class="with-margin-right" icon="comment-alt"></fa-icon> Comments : </span> <span class="info-val">{{commentCount}}</span><br/>
-                    <span class="info-label"><fa-icon class="with-margin-right" icon="subscript"></fa-icon> Subscribers : </span> <span class="info-val">{{subscriberCount}}</span><br/>
-                    <span class="info-label"><fa-icon class="with-margin-right" icon="video"></fa-icon> Videos : </span> <span class="info-val">{{videoCount}}</span><br/>
-                    <span class="info-label"><fa-icon class="with-margin-right" icon="eye"></fa-icon> Views : </span> <span class="info-val">{{viewCount}}</span><br/>
+                    <span class="info-label">
+                        <fa-icon class="with-margin-right" icon="comment-alt"></fa-icon> Comments : </span>
+                    <span class="info-val">{{channel.data.statistics.commentCount}}</span>
+                    <br/>
+                    <span class="info-label">
+                        <fa-icon class="with-margin-right" icon="subscript"></fa-icon> Subscribers : </span>
+                    <span class="info-val">{{channel.data.statistics.subscriberCount}}</span>
+                    <br/>
+                    <span class="info-label">
+                        <fa-icon class="with-margin-right" icon="video"></fa-icon> Videos : </span>
+                    <span class="info-val">{{channel.data.statistics.videoCount}}</span>
+                    <br/>
+                    <span class="info-label">
+                        <fa-icon class="with-margin-right" icon="eye"></fa-icon> Views : </span>
+                    <span class="info-val">{{channel.data.statistics.viewCount}}</span>
+                    <br/>
                 </div>
             </div>
             <div class="col-lg-9">
-                    <div class="stat-val">
-                            <mat-tab-group (selectedTabChange)="onTabClick($event, channel.data.snippet.channelId)">
-                                    <mat-tab label="Home">
-                                        <label class="float-left"><span class="label-info">Name : </span> <span class="label-val">{{channel.data.snippet.title}}</span></label>
-                                        <label class="float-right"><span class="label-info">Publish Date : </span> <span class="label-val" style="margin-right: 12px;">{{channel.data.snippet.publishedAt | date}}</span></label>
-                                        <hr class="hidden-separator">
-                                        <p>
-                                            {{channel.data.snippet.description}}
-                                        </p>
-                                    </mat-tab>
-                                    <mat-tab label="Videos">
-                                        <div class="row" *ngIf="(videos$ | async) as channel_videos">
-                                            <div *ngFor="let video of channel_videos" class="col-md-3 col-lg-3">
-                                                <iframe width="150" height="80" [src]='sanitizer.bypassSecurityTrustResourceUrl(getIFrameSrc(video.player.embedHtml))' frameborder="0"
-                                                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <div class="stat-val">
+                    <mat-tab-group dynamicHeight (selectedTabChange)="onTabClick($event, channel.data.snippet.channelId)">
+                        <mat-tab label="Home">
+                            <label class="float-left">
+                                <span class="label-info">Name : </span>
+                                <span class="label-val">{{channel.data.snippet.title}}</span>
+                            </label>
+                            <label class="float-right">
+                                <span class="label-info">Publish Date : </span>
+                                <span class="label-val" style="margin-right: 12px;">{{channel.data.snippet.publishedAt | date}}</span>
+                            </label>
+                            <hr class="hidden-separator">
+                            <p>
+                                {{channel.data.snippet.description}}
+                            </p>
+                        </mat-tab>
+                        <mat-tab label="Videos">
+                            <div class="row" *ngIf="(videos$ | async) as channel_videos">
+                                <div *ngFor="let video of channel_videos" class="col-md-4 col-lg-4">
+                                    <mat-card class="youtube-card">
+                                        <div class="video-container" [ngStyle]="{'background': '#000 url(' + video.snippet.thumbnails.medium.url + ') center center no-repeat', 'background-size': '125%', 'width':'100%'}">
+                                            <div class="video-infos">
+                                                <span class="left">
+                                                    <fa-icon class="with-margin-right" icon="thumbs-up"></fa-icon>
+                                                    {{ video.statistics.likeCount}}
+                                                </span>
+                                                <span class="center">
+                                                    <fa-icon class="with-margin-right" icon="eye"></fa-icon>
+                                                    {{ video.statistics.viewCount}}
+                                                </span>
+                                                <span class="right">
+                                                    <fa-icon class="with-margin-right" icon="comment-alt"></fa-icon>
+                                                    {{ video.statistics.commentCount}}
+                                                </span>
+                                            </div>
+                                            <div class="video-name-block">
+                                                <div class="video-title-info">
+                                                    {{video.snippet.title}}
+                                                </div>
+                                            </div>
+                                            <div class="video-play-button">
+                                                <fa-icon class="with-margin-right" icon="play-circle" size="3x" [styles]="{'color': 'white'}" (click)="onPlayVideo(video.player.embedHtml)"></fa-icon>
                                             </div>
                                         </div>
-                                        -
-                                    </mat-tab>
-                                    <mat-tab label="Playlists">
-                                            <div class="row" *ngIf="(playlists$ | async) as channel_playlists">
-                                                    <div *ngFor="let playlist of channel_playlists" class="col-md-3 col-lg-3">
-                                                        <iframe width="150" height="80" [src]='sanitizer.bypassSecurityTrustResourceUrl(getIFrameSrc(playlist.player.embedHtml))' frameborder="0"
-                                                            webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                                    </div>
-                                                </div>
-                                                -
-                                    </mat-tab>
-                                </mat-tab-group>
-                    </div>
+                                    </mat-card>
+                                </div>
+                            </div>
+                            <more-data-search-loader *ngIf="(loading$ | async)"></more-data-search-loader>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<app-loader *ngIf="(loading$ | async)"></app-loader>

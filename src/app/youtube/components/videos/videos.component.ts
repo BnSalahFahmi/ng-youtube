@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import * as fromYoutube from './../../reducers/index';
 import * as youtubeActions from './../../actions/youtube.actions';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/shared/animations/route.animations';
 
 @Component({
   selector: 'youtube-videos',
@@ -13,8 +14,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class VideosComponent implements OnInit {
 
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+
   videos$: Observable<any>;
   loading$: Observable<boolean>;
+  selectedVideo;
 
   constructor(private store: Store<fromYoutube.State>, private youtubeService : YoutubeService, public sanitizer: DomSanitizer) {
     this.videos$ = this.store.select(fromYoutube.getVideos);
@@ -23,12 +27,16 @@ export class VideosComponent implements OnInit {
 
   ngOnInit() {
     // Dispatch the load action
-    this.store.dispatch(new youtubeActions.LoadVideos(null));
+    this.store.dispatch(new youtubeActions.LoadVideos());
   }
 
   getIFrameSrc(embedHtml: string) {
     let url = embedHtml.split('"')[5];
     return "https:" + url;
+  }
+
+  onPlayVideo(embedHtml: string) {
+    this.selectedVideo = this.getIFrameSrc(embedHtml);
   }
 
 }

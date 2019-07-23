@@ -10,13 +10,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { YoutubeEffects } from './effects/youtube.effects';
 import { ChannelItemComponent } from '@app/youtube/components/channel-item/channel-item.component';
 import { VideosComponent } from '@app/youtube/components/videos/videos.component';
-
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
 
 @NgModule({
   declarations: [
     ChannelListComponent,
     ChannelItemComponent,
-    VideosComponent
+    VideosComponent,
+    VideoPlayerComponent
   ],
   imports: [
     CommonModule,

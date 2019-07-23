@@ -59,7 +59,14 @@ import {
   faEye,
   faAddressCard,
   faInfoCircle,
-  faThumbsUp
+  faThumbsUp,
+  faPlay,
+  faTimesCircle,
+  faMinusCircle,
+  faCompress,
+  faPlusCircle,
+  faArrowsAlt,
+  faCompressArrowsAlt
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faGithub,
@@ -113,7 +120,14 @@ library.add(
   faEye,
   faAddressCard,
   faInfoCircle,
-  faThumbsUp
+  faThumbsUp,
+  faPlayCircle,
+  faTimesCircle,
+  faMinusCircle,
+  faPlusCircle,
+  faCompress,
+  faArrowsAlt,
+  faCompressArrowsAlt
 );
 
 @NgModule({
