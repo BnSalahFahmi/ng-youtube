@@ -78,6 +78,7 @@ import {
 import { LoaderComponent } from './components/loader/loader.component';
 import { AnimationsService } from './animations/animations.service';
 import { MoreDataSearchLoaderComponent } from './components/more-data-search-loader/more-data-search-loader.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 library.add(
   faBars,
@@ -155,7 +156,8 @@ library.add(
   ],
   declarations: [
     LoaderComponent,
-    MoreDataSearchLoaderComponent
+    MoreDataSearchLoaderComponent,
+    NotFoundComponent
   ],
   exports: [
     CommonModule,

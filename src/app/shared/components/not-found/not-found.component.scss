@@ -1,0 +1,21 @@
+.page-header {
+    text-align: center;
+}
+
+@media screen and (max-width: 992px) {
+    img {
+      height: 250px;
+    }
+}
+  
+@media screen and (max-width: 600px) {
+    img {
+        height: 200px;
+      }
+}
+
+@media screen and (min-width: 992px) {
+    img {
+      height: 500px;
+    }
+}
