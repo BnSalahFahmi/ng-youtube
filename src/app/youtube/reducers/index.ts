@@ -30,6 +30,9 @@ export const getChannelsNextPageToken = createSelector(getYoutube,
 export const getLoading = createSelector(getYoutube,
     (state: fromYoutube.State) => state.loading);
 
+export const getSearchQuery = createSelector(getYoutube,
+    (state: fromYoutube.State) => state.search_query);
+
 export const getSelectedChannel = createSelector(getYoutube,
     (state: fromYoutube.State) => state.selectedChannel);
 

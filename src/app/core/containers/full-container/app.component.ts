@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
 
   currentPage: String = null;
+  lastSearchQuery: String = undefined;
 
   constructor(private store: Store<fromYoutube.State>, private youtubeService: YoutubeService, private router: Router) {
 
@@ -27,18 +28,22 @@ export class AppComponent implements OnInit {
 
   searchMore() {
     let currentUrl = this.router.url;
+    this.store.select(fromYoutube.getSearchQuery).subscribe(
+      (search_query) => {
+        this.lastSearchQuery = search_query != '' ? search_query : undefined;
+      });
     if (currentUrl == "/youtube/channels") {
       this.store.select(fromYoutube.getChannelsNextPageToken).subscribe(
         (data) => {
           this.currentPage = data;
         });
-      this.store.dispatch(new youtubeActions.LoadChannels(this.currentPage));
+      this.store.dispatch(new youtubeActions.LoadChannels({query: this.lastSearchQuery, pageToken: this.currentPage}));
     } else if (currentUrl == "/youtube/videos") {
       this.store.select(fromYoutube.getVideosNextPageToken).subscribe(
         (data) => {
           this.currentPage = data;
         });
-      this.store.dispatch(new youtubeActions.LoadVideos(this.currentPage));
+      this.store.dispatch(new youtubeActions.LoadVideos({query: this.lastSearchQuery, pageToken: this.currentPage}));
     }
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { refCount, publishLast, map } from 'rxjs/operators';
+import { refCount, publishLast, map, filter, catchError, mergeMap } from 'rxjs/operators';
 import { environment as env } from '@env/environment';
 
 @Injectable({
@@ -12,28 +12,40 @@ export class YoutubeService {
   base_url = 'https://www.googleapis.com/youtube/v3/';
   max_results = 50;
 
-  list$: Observable<any>;
-
   constructor(private http: HttpClient) {
-    
+
   }
 
-  fetchChannels(pageToken? : string) {
-    if(pageToken)
-      return this.http.get(`${this.base_url}search?pageToken=${pageToken}&maxResults=${this.max_results}&type=channel&part=snippet&key=${env.YOUTUBE_API_KEY}`);
-    else
-      return this.http.get(`${this.base_url}search?&maxResults=${this.max_results}&type=channel&part=snippet&key=${env.YOUTUBE_API_KEY}`);
+  fetchChannels(query?: string, pageToken?: string) {
+    let url = `${this.base_url}search?&maxResults=${this.max_results}&type=channel&part=snippet`;
+    if (query)
+      url = url.concat(`&q=${query}`);
+    if (pageToken)
+      url = url.concat(`&pageToken=${pageToken}`);
+    return this.http.get(url + `&key=${env.YOUTUBE_API_KEY}`);
   }
 
   getChannel(channelId) {
     return this.http.get(`${this.base_url}channels?part=snippet,statistics,brandingSettings&id=${channelId}&key=${env.YOUTUBE_API_KEY}`);
   }
 
-  fetchVideos(pageToken? : string) {
-    if(pageToken)
-    return this.http.get(`${this.base_url}videos?pageToken=${pageToken}&maxResults=${this.max_results}&chart=mostPopular&part=snippet,player,statistics&key=${env.YOUTUBE_API_KEY}`);
-    else
-      return this.http.get(`${this.base_url}videos?&maxResults=${this.max_results}&chart=mostPopular&part=snippet,player,statistics&key=${env.YOUTUBE_API_KEY}`);
+  async fetchVideos(query?: string, pageToken?: string) {
+    let url = `${this.base_url}search?&maxResults=${this.max_results}&part=snippet,id`;
+    if (query)
+      url = url.concat(`&q=${query}`);
+    if (pageToken)
+      url = url.concat(`&pageToken=${pageToken}`);
+    const res = await this.http.get(url + `&key=${env.YOUTUBE_API_KEY}`).toPromise();
+    let ids = [];
+    res['items'].forEach((item) => {
+        ids.push(item.id.videoId);
+    });
+    return await this.getVideos(ids).toPromise();
+  }
+
+  getVideos(ids) {
+    debugger;
+    return this.http.get(`${this.base_url}videos?id=${ids.join(',')}&maxResults=${this.max_results}&part=snippet,player,contentDetails,statistics&key=${env.YOUTUBE_API_KEY}`);
   }
 
   fetchChannelStatistics(channelId) {

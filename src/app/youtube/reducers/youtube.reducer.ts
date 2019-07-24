@@ -6,6 +6,7 @@ import { Pageable, initPageable } from '@app/youtube/models/pageable.model';
 
 export interface State {
     loading: boolean,
+    search_query: string,
     channels: Pageable<Channel>,
     selectedChannel: Channel,
     videos: Pageable<object>
@@ -13,6 +14,7 @@ export interface State {
 
 export const initialState: State = {
     loading: false,
+    search_query: '',
     channels: initPageable(),
     selectedChannel: null,
     videos: initPageable()
@@ -41,6 +43,7 @@ export function reducer(state = initialState, action: youtubeActions.ActionType)
         case youtubeActions.LOAD_VIDEOS:
             return { ...state, loading: true };
         case youtubeActions.LOAD_VIDEOS_SUCCESS:
+            debugger;
             var videos_pageable = initPageable();
             var newArray = [];
             newArray.push.apply(newArray, state.videos.items);
@@ -93,6 +96,24 @@ export function reducer(state = initialState, action: youtubeActions.ActionType)
             } else {
                 return state;
             }
+        case youtubeActions.SEARCH_CHANNELS:
+            return { ...state, search_query: action.payload, loading: true };
+        case youtubeActions.SEARCH_CHANNELS_SUCCESS:
+            let pageable_channels_search = initPageable();
+            pageable_channels_search.items = action.payload.items;
+            pageable_channels_search.nextPageToken = action.payload.nextPageToken;
+            pageable_channels_search.resultsPerPage = action.payload.pageInfo.resultsPerPage;
+            pageable_channels_search.totalResults = action.payload.pageInfo.totalResults;
+            return { ...state, channels: pageable_channels_search, loading: false };
+        case youtubeActions.SEARCH_VIDEOS:
+            return { ...state, search_query: action.payload, loading: true };
+        case youtubeActions.SEARCH_VIDEOS_SUCCESS:
+            let pageable_videos_search = initPageable();
+            pageable_videos_search.items = action.payload.items;
+            pageable_videos_search.nextPageToken = action.payload.nextPageToken;
+            pageable_videos_search.resultsPerPage = action.payload.pageInfo.resultsPerPage;
+            pageable_videos_search.totalResults = action.payload.pageInfo.totalResults;
+            return { ...state, videos: pageable_videos_search, loading: false };
         default:
             return state;
     }

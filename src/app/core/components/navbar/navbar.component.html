@@ -42,6 +42,7 @@
                                 </button>
                             </span>
                         </div>
+                        <mat-search-bar name="search-bar" (onEnter)="handleEnterClick($event)" (onClose)="handleCloseClick($event)"></mat-search-bar>
                         <button mat-icon-button routerLink="profile" routerLinkActive="active">
                             <fa-icon icon="user-circle"></fa-icon>
                         </button>

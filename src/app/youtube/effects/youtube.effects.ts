@@ -23,7 +23,7 @@ export class YoutubeEffects {
     @Effect()
     loadChannels = this.actions$.pipe(
         ofType(youtubeActions.LOAD_CHANNELS),
-        mergeMap((action: youtubeActions.LoadChannels) => this.youtubeService.fetchChannels(action.payload)),
+        mergeMap((action: youtubeActions.LoadChannels) => typeof (action.payload) != 'object' ? this.youtubeService.fetchChannels(action.payload) : this.youtubeService.fetchChannels(action.payload.query, action.payload.pageToken)),
         map(channels => new youtubeActions.LoadChannelsSuccess(channels)),
         catchError(err =>
             of(new youtubeActions.LoadChannelsFail({ error: err.message }))
@@ -49,7 +49,7 @@ export class YoutubeEffects {
     @Effect()
     loadVideos = this.actions$.pipe(
         ofType(youtubeActions.LOAD_VIDEOS),
-        mergeMap((action: youtubeActions.LoadVideos) => this.youtubeService.fetchVideos(action.payload)),
+        mergeMap((action: youtubeActions.LoadVideos) => typeof (action.payload) != 'object' ? this.youtubeService.fetchVideos(action.payload) : this.youtubeService.fetchVideos(action.payload.query, action.payload.pageToken)),
         map(videos => new youtubeActions.LoadVideosSuccess(videos)),
         catchError(err =>
             of(new youtubeActions.LoadVideosFail({ error: err.message }))
@@ -99,6 +99,37 @@ export class YoutubeEffects {
         map(playlists => new youtubeActions.LoadChannelPlaylistsSuccess(playlists)),
         catchError(err =>
             of(new youtubeActions.LoadChannelPlaylistsFail({ error: err.message }))
+        )
+    );
+
+
+    /**
+    * Search Channels effects
+    *
+    * @memberof ChannelsEffects
+    */
+    @Effect()
+    searchChannels = this.actions$.pipe(
+        ofType(youtubeActions.SEARCH_CHANNELS),
+        mergeMap((action: youtubeActions.SearchChannels) => this.youtubeService.fetchChannels(action.payload)),
+        map(channels => new youtubeActions.SearchChannelsSuccess(channels)),
+        catchError(err =>
+            of(new youtubeActions.SearchChannelsFail({ error: err.message }))
+        )
+    );
+
+    /**
+    * Search Channels effects
+    *
+    * @memberof ChannelsEffects
+    */
+    @Effect()
+    searchVideos = this.actions$.pipe(
+        ofType(youtubeActions.SEARCH_VIDEOS),
+        mergeMap((action: youtubeActions.SearchVideos) => this.youtubeService.fetchVideos(action.payload)),
+        map(videos => new youtubeActions.SearchVideosSuccess(videos)),
+        catchError(err =>
+            of(new youtubeActions.SearchVideosFail({ error: err.message }))
         )
     );
 

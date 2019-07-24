@@ -79,6 +79,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { AnimationsService } from './animations/animations.service';
 import { MoreDataSearchLoaderComponent } from './components/more-data-search-loader/more-data-search-loader.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NgMatSearchBarModule } from 'ng-mat-search-bar';
 
 library.add(
   faBars,
@@ -152,7 +153,8 @@ library.add(
     MatSnackBarModule,
     MatSlideToggleModule,
     MatDividerModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgMatSearchBarModule
   ],
   declarations: [
     LoaderComponent,
@@ -185,7 +187,8 @@ library.add(
     MatNativeDateModule,
     FontAwesomeModule,
     LoaderComponent,
-    MoreDataSearchLoaderComponent
+    MoreDataSearchLoaderComponent,
+    NgMatSearchBarModule
   ],
   providers: [
     AnimationsService

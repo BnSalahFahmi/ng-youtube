@@ -24,6 +24,14 @@ export const LOAD_VIDEOS = '[Youtube Videos] load channel videos';
 export const LOAD_VIDEOS_SUCCESS = '[Youtube Videos] load channel videos success';
 export const LOAD_VIDEOS_FAIL = '[Youtube Videos] load channel videos fail';
 
+export const SEARCH_CHANNELS = '[Youtube Channels] search';
+export const SEARCH_CHANNELS_SUCCESS = '[Youtube Channels] search success';
+export const SEARCH_CHANNELS_FAIL = '[Youtube Channels] search fail';
+
+export const SEARCH_VIDEOS = '[Youtube Videos] search';
+export const SEARCH_VIDEOS_SUCCESS = '[Youtube Videos] search success';
+export const SEARCH_VIDEOS_FAIL = '[Youtube Videos] search fail';
+
 /**
  * Load Channels Actions
  */
@@ -162,11 +170,58 @@ export class LoadVideosFail implements Action {
     constructor(public payload: any) { }
 }
 
+/**
+ * Search Channels Actions
+ */
+
+export class SearchChannels implements Action {
+    readonly type = SEARCH_CHANNELS;
+
+    constructor(public payload?: any) { }
+}
+
+export class SearchChannelsSuccess implements Action {
+    readonly type = SEARCH_CHANNELS_SUCCESS;
+
+    constructor(public payload: any) { }
+}
+
+export class SearchChannelsFail implements Action {
+    readonly type = SEARCH_CHANNELS_FAIL;
+
+    constructor(public payload: any) { }
+}
+
+
+/**
+ * Search Videos Actions
+ */
+
+export class SearchVideos implements Action {
+    readonly type = SEARCH_VIDEOS;
+
+    constructor(public payload?: any) { }
+}
+
+export class SearchVideosSuccess implements Action {
+    readonly type = SEARCH_VIDEOS_SUCCESS;
+
+    constructor(public payload: any) { }
+}
+
+export class SearchVideosFail implements Action {
+    readonly type = SEARCH_VIDEOS_FAIL;
+
+    constructor(public payload: any) { }
+}
+
 
 // export a new type that represents the youtube actions 
 export type ActionType = LoadChannels | LoadChannelsSuccess | LoadChannelsFail |
-ViewChannel | ViewChannelSuccess | ViewChannelFail |
-LoadChannelStatistics | LoadChannelStatisticsSuccess | LoadChannelStatisticsFail | 
-LoadChannelVideos | LoadChannelVideosSuccess | LoadChannelVideosFail |
-LoadChannelPlaylists | LoadChannelPlaylistsSuccess | LoadChannelPlaylistsFail |
-LoadVideos | LoadVideosSuccess | LoadVideosFail;
+    ViewChannel | ViewChannelSuccess | ViewChannelFail |
+    LoadChannelStatistics | LoadChannelStatisticsSuccess | LoadChannelStatisticsFail |
+    LoadChannelVideos | LoadChannelVideosSuccess | LoadChannelVideosFail |
+    LoadChannelPlaylists | LoadChannelPlaylistsSuccess | LoadChannelPlaylistsFail |
+    LoadVideos | LoadVideosSuccess | LoadVideosFail |
+    SearchChannels | SearchChannelsSuccess | SearchChannelsFail |
+    SearchVideos | SearchVideosSuccess | SearchVideosFail;

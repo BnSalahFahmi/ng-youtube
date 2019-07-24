@@ -4,6 +4,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
+
 body{
     font-family: 'Roboto', 'Noto', sans-serif;
     margin: 0px;
@@ -58,4 +59,15 @@ body{
 .mat-tab-label-content {
     color: #385898;
     font-weight: 600;
+}
+
+.mat-search_icon-search, .mat-search_icon-close {
+    font-size: 20.5px !important;
+    line-height: 1.4 !important;
+}
+
+mat-search-bar .mat-form-field-infix {
+    width: 250px;
+    font-size: 14px;
+    margin-top: 12px;
 }
