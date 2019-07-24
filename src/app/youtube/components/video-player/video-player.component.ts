@@ -17,9 +17,8 @@ export class VideoPlayerComponent implements OnInit {
   ngOnInit() {
   }
 
-  getIFrameSrc(embedHtml: string) {
-    let url = embedHtml.split('"')[5];
-    return "https:" + url;
+  getEmbedHTML() {
+    return this.embedHTML + "?autoplay=1";
   }
 
   onCloseVideoPlayerClick(){

@@ -12,8 +12,8 @@
                 <fa-icon class="without-margin-right" icon="times-circle" (click)="onCloseVideoPlayerClick()"></fa-icon>
             </div>
         </div>
-        <iframe *ngIf="video_player_maximized" width="380px" height="200px" [src]='sanitizer.bypassSecurityTrustResourceUrl(embedHTML)'
-            frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <iframe *ngIf="video_player_maximized" width="380px" height="200px" [src]='sanitizer.bypassSecurityTrustResourceUrl(getEmbedHTML())'
+            frameborder="0" allow='autoplay'></iframe>
     </div>
     <div class="video-player-full" *ngIf="video_player_full_screen">
         <div class="row">
@@ -29,7 +29,6 @@
             </div>
         </div>
         <iframe style="position:fixed; top:20px; left:0; bottom:0; right:0; width:100%; height:97.5%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"
-            [src]='sanitizer.bypassSecurityTrustResourceUrl(embedHTML)' frameborder="0" webkitallowfullscreen mozallowfullscreen
-            allowfullscreen></iframe>
+            [src]='sanitizer.bypassSecurityTrustResourceUrl(getEmbedHTML())' frameborder="0" allow='autoplay'></iframe>
     </div>
 </div>
