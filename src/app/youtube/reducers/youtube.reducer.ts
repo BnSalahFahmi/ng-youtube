@@ -96,7 +96,12 @@ export function reducer(state = initialState, action: youtubeActions.ActionType)
                 return state;
             }
         case youtubeActions.SEARCH_CHANNELS:
-            return { ...state, search_query: action.payload, loading: true };
+            let pageable_channels_before_search = initPageable();
+            pageable_channels_before_search.items = [];
+            pageable_channels_before_search.nextPageToken = '';
+            pageable_channels_before_search.resultsPerPage = 0;
+            pageable_channels_before_search.totalResults = 0;
+            return { ...state, search_query: action.payload, channels: pageable_channels_before_search, loading: true };
         case youtubeActions.SEARCH_CHANNELS_SUCCESS:
             let pageable_channels_search = initPageable();
             pageable_channels_search.items = action.payload.items;
@@ -105,7 +110,12 @@ export function reducer(state = initialState, action: youtubeActions.ActionType)
             pageable_channels_search.totalResults = action.payload.pageInfo.totalResults;
             return { ...state, channels: pageable_channels_search, loading: false };
         case youtubeActions.SEARCH_VIDEOS:
-            return { ...state, search_query: action.payload, loading: true };
+            let pageable_videos_before_search = initPageable();
+            pageable_videos_before_search.items = [];
+            pageable_videos_before_search.nextPageToken = '';
+            pageable_videos_before_search.resultsPerPage = 0;
+            pageable_videos_before_search.totalResults = 0;
+            return { ...state, search_query: action.payload, videos: pageable_videos_before_search, loading: true };
         case youtubeActions.SEARCH_VIDEOS_SUCCESS:
             let pageable_videos_search = initPageable();
             pageable_videos_search.items = action.payload.items;

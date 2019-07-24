@@ -1,14 +1,14 @@
-$blue: #385898;
+$blue: #3f51b5;
 $white: #eee;
 
+// scaling... any units
 $width: 100px;
 
 .loader {
-  position: fixed;
-  top: 40%;
-  left:45%;
+  position: relative;
   margin: 0 auto;
   width: $width;
+  z-index: 50000;
   &:before {
     content: '';
     display: block;
@@ -18,9 +18,9 @@ $width: 100px;
 
 .circular {
   animation: rotate 2s linear infinite;
-  height: 80%;
+  height: 70%;
   transform-origin: center center;
-  width: 80%;
+  width: 70%;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -76,6 +76,7 @@ $width: 100px;
   }
 }
 
+// demo-specific
 body {
   background-color: $white;
 }
@@ -86,4 +87,79 @@ body {
   left: 0;
   right: 0;
   padding: 5%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: -60px;
+}
+
+.aligned-container {
+  height: 100vh;
+  width: 100vw;
+  line-height: 100vh;
+}
+
+.spinner-container,
+.spinner-container-main {
+  position: fixed;
+  background-color: #e0e0e07d;
+  width: 100%;
+  height: 100%;
+  display: block;
+  top: 0%;
+}
+
+.spinner-container {
+  height: 54vh;
+}
+
+.spinner-container-main {
+  height: 100vh;
+}
+
+.spinner {
+  position: absolute;
+  top: 41%;
+  left: 49%;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: sk-rotateplane 0.9s infinite ease-in-out;
+  animation: sk-rotateplane 0.9s infinite ease-in-out;
+}
+
+.loader-backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.559);
+  z-index: 999999;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {
+      -webkit-transform: perspective(120px)
+  }
+  50% {
+      -webkit-transform: perspective(120px) rotateY(180deg)
+  }
+  100% {
+      -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+      transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  }
+  50% {
+      transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  }
+  100% {
+      transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+      -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
 }
