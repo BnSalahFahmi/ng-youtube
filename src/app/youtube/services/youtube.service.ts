@@ -16,17 +16,26 @@ export class YoutubeService {
 
   }
 
-  fetchChannels(query?: string, pageToken?: string) {
+  async fetchChannels(query?: string, pageToken?: string) {
     let url = `${this.base_url}search?&maxResults=${this.max_results}&type=channel&part=snippet`;
     if (query)
       url = url.concat(`&q=${query}`);
     if (pageToken)
       url = url.concat(`&pageToken=${pageToken}`);
-    return this.http.get(url + `&key=${env.YOUTUBE_API_KEY}`);
+    const res = await this.http.get(url + `&key=${env.YOUTUBE_API_KEY}`).toPromise();
+    let ids = [];
+    res['items'].forEach((item) => {
+      ids.push(item.id.channelId);
+    });
+    return await this.getChannels(ids).toPromise();
   }
 
   getChannel(channelId) {
     return this.http.get(`${this.base_url}channels?part=snippet,statistics,brandingSettings&id=${channelId}&key=${env.YOUTUBE_API_KEY}`);
+  }
+
+  getChannels(ids) {
+    return this.http.get(`${this.base_url}channels?id=${ids.join(',')}&maxResults=${this.max_results}&part=snippet,statistics&key=${env.YOUTUBE_API_KEY}`);
   }
 
   async fetchVideos(query?: string, pageToken?: string) {
@@ -38,13 +47,12 @@ export class YoutubeService {
     const res = await this.http.get(url + `&key=${env.YOUTUBE_API_KEY}`).toPromise();
     let ids = [];
     res['items'].forEach((item) => {
-        ids.push(item.id.videoId);
+      ids.push(item.id.videoId);
     });
     return await this.getVideos(ids).toPromise();
   }
 
   getVideos(ids) {
-    debugger;
     return this.http.get(`${this.base_url}videos?id=${ids.join(',')}&maxResults=${this.max_results}&part=snippet,player,contentDetails,statistics&key=${env.YOUTUBE_API_KEY}`);
   }
 

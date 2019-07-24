@@ -43,7 +43,6 @@ export function reducer(state = initialState, action: youtubeActions.ActionType)
         case youtubeActions.LOAD_VIDEOS:
             return { ...state, loading: true };
         case youtubeActions.LOAD_VIDEOS_SUCCESS:
-            debugger;
             var videos_pageable = initPageable();
             var newArray = [];
             newArray.push.apply(newArray, state.videos.items);
