@@ -1,27 +1,82 @@
-# NgYoutube
+# Ng-YouTube
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
+> Youtube player app built with Angular 8 and NGRX that allows to search and view channels and start youtube videos on a video player using the [`YouTube v3 API`](https://developers.google.com/youtube/v3/).
 
-## Development server
+## Before you start
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+ 1. You need a [Google Account](https://www.google.com/accounts/NewAccount) to access the Google APIs Console, request an API key, and register your application.
+ 2. [Register your application](https://console.developers.google.com/project) with Google so that it can submit API requests:
+ 3. After registering your application, select **YouTube Data API** as one of the services that your application uses.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+     - Go to the [APIs Console](https://console.developers.google.com/project) and select the project that you just registered.
+     - Click on *APIs & auth* on the left side. Then a dropdown will be opened.
+     - Select *APIs*.
+     - Search for *YouTube Data API v3*, click it and click <kbd>Enable API</kbd>
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Installation and usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**1- Install [Angular-CLI](https://github.com/angular/angular-cli) :**
 
-## Running end-to-end tests
+```bash
+$ npm install -g @angular/cli@latest
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+**12 Clone the project:**
 
-## Further help
+```bash
+$ git clone https://github.com/BnSalahFahmi/ng-youtube.git
+$ cd ng-youtube
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+**3- Install the npm packages described in the package.json :**
+
+```bash
+$ npm install
+```
+
+**4- Go back in your Google app and click again on *APIs & auth* and then select *Credentials*.
+**5- Click <kbd>Create new Client ID</kbd>. This will create new OAuth 2.0 credentials:
+
+     - Select *Web application*
+     - Click <kbd>Configure consent screen</kbd>
+     - Complete the required fields:
+
+         - Product name: what ever you want (e.g. "Youtube API Test")
+         - Product logo is optional
+         - Home page is optional
+         - Save the changes
+
+     - Now you will have to set the auth urls. This test application uses the following urls:
+
+         - Authorized JavaScript origins: `http://localhost:4200/` (paste it in the first textarea)
+         - Authorized redirect URIs: `http://localhost:4200/oauth2callback` (paste it in the second textarea)
+
+     - Finally, click <kbd>Create Client ID</kbd>
+
+
+OK, at this step you have the credentials (in your Google app). Now you have to use them in this test application:
+
+ 1. Go to environments folde and open `environment.ts` and replace `YOUTUBE_API_KEY` with the **key** generated previously.
+ 2. Now you are ready. Start the script (`npm start` or `ng serve`), visit `http://localhost:4200` and enjoy!.
+
+ 
+## Dependencies
+- Angular 8
+- Angular CLI
+- NGRX
+- Angular Material
+- Bootstrap 4
+- ngx-infinite-scroll
+- ng-mat-search-bar
+- lodash
+- angular-font-awesome
+
+## Contributors  
+
+**@author:** 'Fahmi BEN SALAH *< [fahmii.bensalah@gmail.com](mailto:fahmii.bensalah@gmail.com) >*' 
+
+### Contributing
+If you like the project, shoot a :star2: and feel free to fork & send PR anytime.
