@@ -3,6 +3,7 @@ import * as fromRoot from '../../core/reducers';
 import { Channel, initChannel } from '@app/youtube/models/channel.model';
 import { getSelectedChannel } from '@app/youtube/reducers';
 import { Pageable, initPageable } from '@app/youtube/models/pageable.model';
+import * as _ from 'lodash';
 
 export interface State {
     loading: boolean,
@@ -28,8 +29,8 @@ export function reducer(state = initialState, action: youtubeActions.ActionType)
             let pageable = initPageable();
             var newArray = [];
             newArray.push.apply(newArray, state.channels.items);
-            newArray.push.apply(newArray, action.payload.items);
-            pageable.items = newArray;
+            newArray.push.apply(newArray, _.uniqBy(action.payload.items, 'id'));
+            pageable.items = _.uniqBy(newArray, 'id');
             pageable.nextPageToken = action.payload.nextPageToken;
             pageable.resultsPerPage = action.payload.pageInfo.resultsPerPage;
             pageable.totalResults = action.payload.pageInfo.totalResults;
@@ -47,7 +48,7 @@ export function reducer(state = initialState, action: youtubeActions.ActionType)
             var newArray = [];
             newArray.push.apply(newArray, state.videos.items);
             newArray.push.apply(newArray, action.payload.items);
-            videos_pageable.items = newArray;
+            videos_pageable.items = _.uniqBy(newArray, 'id');
             videos_pageable.nextPageToken = action.payload.nextPageToken;
             videos_pageable.resultsPerPage = action.payload.pageInfo.resultsPerPage;
             videos_pageable.totalResults = action.payload.pageInfo.totalResults;

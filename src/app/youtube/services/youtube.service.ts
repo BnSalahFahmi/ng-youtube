@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { refCount, publishLast, map, filter, catchError, mergeMap } from 'rxjs/operators';
 import { environment as env } from '@env/environment';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,15 @@ export class YoutubeService {
 
   base_url = 'https://www.googleapis.com/youtube/v3/';
   max_results = 50;
+
+  channels_page_infos = {
+    prevPageToken : undefined,
+    nextPageToken : undefined
+  }
+  videos_page_infos = {
+    prevPageToken : undefined,
+    nextPageToken : undefined
+  }
 
   constructor(private http: HttpClient) {
 
@@ -22,7 +32,12 @@ export class YoutubeService {
       url = url.concat(`&q=${query}`);
     if (pageToken)
       url = url.concat(`&pageToken=${pageToken}`);
+    else if (this.channels_page_infos.nextPageToken && this.channels_page_infos.prevPageToken != this.channels_page_infos.nextPageToken) {
+      this.channels_page_infos.prevPageToken = this.channels_page_infos.nextPageToken;
+      url = url.concat(`&pageToken=${this.channels_page_infos.nextPageToken}`);
+    }
     const res = await this.http.get(url + `&key=${env.YOUTUBE_API_KEY}`).toPromise();
+    this.channels_page_infos.nextPageToken = res['nextPageToken'];
     let ids = [];
     res['items'].forEach((item) => {
       ids.push(item.id.channelId);
@@ -35,7 +50,7 @@ export class YoutubeService {
   }
 
   getChannels(ids) {
-    return this.http.get(`${this.base_url}channels?id=${ids.join(',')}&maxResults=${this.max_results}&part=snippet,statistics&key=${env.YOUTUBE_API_KEY}`);
+    return this.http.get(`${this.base_url}channels?id=${ids.join(',')}&maxResults=${this.max_results}&part=snippet,contentDetails,statistics&key=${env.YOUTUBE_API_KEY}`);
   }
 
   async fetchVideos(query?: string, pageToken?: string) {
@@ -44,7 +59,12 @@ export class YoutubeService {
       url = url.concat(`&q=${query}`);
     if (pageToken)
       url = url.concat(`&pageToken=${pageToken}`);
+    else if (this.videos_page_infos.nextPageToken && this.videos_page_infos.prevPageToken != this.videos_page_infos.nextPageToken) {
+      this.videos_page_infos.prevPageToken = this.videos_page_infos.nextPageToken;
+      url = url.concat(`&pageToken=${this.videos_page_infos.nextPageToken}`);
+    }
     const res = await this.http.get(url + `&key=${env.YOUTUBE_API_KEY}`).toPromise();
+    this.videos_page_infos.nextPageToken = res['nextPageToken'];
     let ids = [];
     res['items'].forEach((item) => {
       ids.push(item.id.videoId);
@@ -53,6 +73,7 @@ export class YoutubeService {
   }
 
   getVideos(ids) {
+    console.log(`${this.base_url}videos?id=${ids.join(',')}&maxResults=${this.max_results}&part=snippet,player,contentDetails,statistics&key=${env.YOUTUBE_API_KEY}`);
     return this.http.get(`${this.base_url}videos?id=${ids.join(',')}&maxResults=${this.max_results}&part=snippet,player,contentDetails,statistics&key=${env.YOUTUBE_API_KEY}`);
   }
 
@@ -61,7 +82,7 @@ export class YoutubeService {
   }
 
   fetchChannelVideos(channelId) {
-    return this.http.get(`${this.base_url}videos?part=snippet,player,statistics&chart=mostPopular&maxResults=${this.max_results}&channelId=${channelId}&key=${env.YOUTUBE_API_KEY}`);
+    return this.http.get(`${this.base_url}videos?part=snippet,contentDetails,player,statistics&chart=mostPopular&maxResults=${this.max_results}&channelId=${channelId}&key=${env.YOUTUBE_API_KEY}`);
   }
 
   fetchChannelPlaylists(channelId) {

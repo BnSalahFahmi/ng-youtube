@@ -66,7 +66,8 @@ import {
   faCompress,
   faPlusCircle,
   faArrowsAlt,
-  faCompressArrowsAlt
+  faCompressArrowsAlt,
+  faClock
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faGithub,
@@ -129,7 +130,8 @@ library.add(
   faPlusCircle,
   faCompress,
   faArrowsAlt,
-  faCompressArrowsAlt
+  faCompressArrowsAlt,
+  faClock
 );
 
 @NgModule({

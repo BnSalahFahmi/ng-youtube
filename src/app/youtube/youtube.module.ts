@@ -11,13 +11,15 @@ import { YoutubeEffects } from './effects/youtube.effects';
 import { ChannelItemComponent } from '@app/youtube/components/channel-item/channel-item.component';
 import { VideosComponent } from '@app/youtube/components/videos/videos.component';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
+import { DurationPipe } from '@app/youtube/pipes/duration.pipe';
 
 @NgModule({
   declarations: [
     ChannelListComponent,
     ChannelItemComponent,
     VideosComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    DurationPipe
   ],
   imports: [
     CommonModule,
