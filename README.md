@@ -2,6 +2,15 @@
 
 > Youtube player app built with Angular 8 and NGRX that allows to search and view channels and start youtube videos on a video player using the [`YouTube v3 API`](https://developers.google.com/youtube/v3/).
 
+## Preview
+<p align="center">
+	<img src='preview.gif' alt='Preview'>
+</p>
+
+## Prerequisite
+* Nodejs v6+
+* yarnpkg (optional)
+
 ## Before you start
 
 
@@ -37,7 +46,7 @@ $ cd ng-youtube
 $ npm install
 ```
 
-**4- Go back in your Google app and click again on *APIs & auth*, select *Credentials* and then click <kbd>Create new Client ID</kbd> **
+**4- Go back in your Google app and click again on *APIs & auth*, select *Credentials* and then click <kbd>Create new Client ID</kbd>:**
 
      - Select *Web application*
      - Click <kbd>Configure consent screen</kbd>
