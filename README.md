@@ -24,7 +24,7 @@
 $ npm install -g @angular/cli@latest
 ```
 
-**12 Clone the project:**
+**2- Clone the project:**
 
 ```bash
 $ git clone https://github.com/BnSalahFahmi/ng-youtube.git
@@ -37,8 +37,8 @@ $ cd ng-youtube
 $ npm install
 ```
 
-**4- Go back in your Google app and click again on *APIs & auth* and then select *Credentials*.
-**5- Click <kbd>Create new Client ID</kbd>. This will create new OAuth 2.0 credentials:
+**4- Go back in your Google app and click again on *APIs & auth* and then select *Credentials*.**
+**5- Click <kbd>Create new Client ID</kbd>. This will create new OAuth 2.0 credentials:**
 
      - Select *Web application*
      - Click <kbd>Configure consent screen</kbd>
