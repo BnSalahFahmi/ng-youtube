@@ -8,7 +8,7 @@
 </p>
 
 ## Prerequisite
-* Nodejs v6+
+* Nodejs v10+
 * yarnpkg (optional)
 
 ## Before you start
