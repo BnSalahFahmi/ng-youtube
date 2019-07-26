@@ -18,6 +18,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ProfileComponent } from '@app/core/components/profile/profile.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
       logOnly: environment.production,
     }),
     SharedModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
