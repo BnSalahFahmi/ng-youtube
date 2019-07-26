@@ -7,7 +7,7 @@ import { NotFoundComponent } from '@app/shared/components/not-found/not-found.co
 const routes: Routes = [
   { path:"dashboard", component: DashboardComponent },
   { path:"profile", component: ProfileComponent },
-  { path: "youtube", loadChildren: './youtube/youtube.module#YoutubeModule' },
+  { path: "youtube", loadChildren: () => import('./youtube/youtube.module').then(m => m.YoutubeModule) },
   { path: "", redirectTo: "dashboard", pathMatch: "full" },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' }
