@@ -9,7 +9,7 @@
 }
 
 .infos {
-    margin-top: -150px;
+    margin-top: -158px;
 }
 
 .profile-photo {
@@ -21,7 +21,7 @@
 }
 
 .mat-tab-group {
-    margin: -71px 0px 0px 0px;
+    margin: -62px 0px 0px 0px;
 }
 
 .channel-name {
@@ -49,7 +49,7 @@
     margin-right: auto;
     margin-top: 30px;
     border-radius: 5px;
-    border: 1px solid #dddfe2;
+    //border: 1px solid #dddfe2;
     margin: 20px 0px;
 }
 
@@ -98,6 +98,11 @@ p {
     font-size: 14px;
 }
 
+.p-val {
+    font-size: 14px;
+    padding: 10px !important;
+}
+
 .hidden-separator {
     margin-top: 35px;
     width: 90%;
@@ -106,6 +111,8 @@ p {
 
 .youtube-card {
     box-shadow: none !important;
+    background-color: transparent !important;
+    cursor: pointer !important;
 }
 
 .video-infos {
@@ -186,3 +193,21 @@ p {
     border-bottom: 1px solid #dddfe2;
 }
 
+hr {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+.empty {
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+.stat-block {
+    background-color: #FFF;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6px;
+    border-radius: 1px;
+    border: 1px solid #dddfe2;
+}

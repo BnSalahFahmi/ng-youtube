@@ -13,48 +13,95 @@
             <div class="col-lg-3">
                 <div class="stat">
                     <label class="label-info">
-                        <fa-icon class="with-margin-right globe-europe" icon="globe-europe"></fa-icon> Infos</label>
+                        <fa-icon class="with-margin-right globe-europe" icon="globe-europe"></fa-icon> Statistics
+                    </label>
                     <hr class="separator">
                     <span class="info-label">
-                        <fa-icon class="with-margin-right" icon="comment-alt"></fa-icon> Comments : </span>
+                        <fa-icon class="with-margin-right" icon="comment-alt"></fa-icon> Comments :
+                    </span>
                     <span class="info-val">{{channel.data.statistics.commentCount}}</span>
-                    <br/>
+                    <br />
                     <span class="info-label">
-                        <fa-icon class="with-margin-right" icon="subscript"></fa-icon> Subscribers : </span>
+                        <fa-icon class="with-margin-right" icon="subscript"></fa-icon> Subscribers :
+                    </span>
                     <span class="info-val">{{channel.data.statistics.subscriberCount}}</span>
-                    <br/>
+                    <br />
                     <span class="info-label">
-                        <fa-icon class="with-margin-right" icon="video"></fa-icon> Videos : </span>
+                        <fa-icon class="with-margin-right" icon="video"></fa-icon> Videos :
+                    </span>
                     <span class="info-val">{{channel.data.statistics.videoCount}}</span>
-                    <br/>
+                    <br />
                     <span class="info-label">
-                        <fa-icon class="with-margin-right" icon="eye"></fa-icon> Views : </span>
+                        <fa-icon class="with-margin-right" icon="eye"></fa-icon> Views :
+                    </span>
                     <span class="info-val">{{channel.data.statistics.viewCount}}</span>
-                    <br/>
+                    <br />
                 </div>
             </div>
             <div class="col-lg-9">
                 <div class="stat-val">
-                    <mat-tab-group dynamicHeight (selectedTabChange)="onTabClick($event, channel.data.snippet.channelId)">
+                    <mat-tab-group dynamicHeight (selectedTabChange)="onTabClick($event, channel.data.id)">
                         <mat-tab label="Home">
-                            <label class="float-left">
-                                <span class="label-info">Name : </span>
-                                <span class="label-val">{{channel.data.snippet.title}}</span>
-                            </label>
-                            <label class="float-right">
-                                <span class="label-info">Publish Date : </span>
-                                <span class="label-val" style="margin-right: 12px;">{{channel.data.snippet.publishedAt | date}}</span>
-                            </label>
-                            <hr class="hidden-separator">
+                            <ng-template mat-tab-label>
+                                <fa-icon class="with-margin-right" icon="tachometer-alt"></fa-icon>
+                                Home
+                            </ng-template>
+                            <!-- <span class="label-info">
+                                <fa-icon class="with-margin-right" icon="thumbs-up"></fa-icon> Description :
+                            </span>
+                            <p class="empty" *ngIf="channel.data.snippet.description == ''">
+                                    No description found
+                            </p>
                             <p>
                                 {{channel.data.snippet.description}}
                             </p>
+                            <hr>
+                            <span class="label-info">
+                                <fa-icon class="with-margin-right" icon="video"></fa-icon> Top 5 videos :
+                            </span> -->
+
+                            <div class="stat-block">
+                                <label class="label-info">
+                                    <fa-icon class="with-margin-right globe-europe" icon="globe-europe"></fa-icon>
+                                    Infos
+                                </label>
+                                <hr class="separator">
+                                <label>
+                                    <span class="label-info">Name : </span>
+                                    <span class="label-val">{{channel.data.snippet.title}}</span>
+                                </label>
+                                <label class="float-right">
+                                    <span class="label-info">Publish Date : </span>
+                                    <span class="label-val"
+                                        style="margin-right: 12px;">{{channel.data.snippet.publishedAt | date}}</span>
+                                </label>
+                            </div>
+
+                            <div class="stat-block">
+                                <label class="label-info">
+                                    <fa-icon class="with-margin-right globe-europe" icon="globe-europe"></fa-icon>
+                                    Description
+                                </label>
+                                <hr class="separator">
+                                <p class="empty" *ngIf="channel.data.snippet.description == ''">
+                                    No description found
+                                </p>
+                                <p class="p-val">
+                                    {{channel.data.snippet.description}}
+                                </p>
+                            </div>
+
                         </mat-tab>
                         <mat-tab label="Videos">
+                            <ng-template mat-tab-label>
+                                <fa-icon class="with-margin-right" icon="video"></fa-icon>
+                                Videos
+                            </ng-template>
                             <div class="row" *ngIf="(videos$ | async) as channel_videos">
                                 <div *ngFor="let video of channel_videos" class="col-md-4 col-lg-4">
                                     <mat-card class="youtube-card">
-                                        <div class="video-container" [ngStyle]="{'background': '#000 url(' + video.snippet.thumbnails.medium.url + ') center center no-repeat', 'background-size': '125%', 'width':'100%'}">
+                                        <div class="video-container"
+                                            [ngStyle]="{'background': '#000 url(' + video.snippet.thumbnails.medium.url + ') center center no-repeat', 'background-size': '125%', 'width':'100%'}">
                                             <div class="video-infos">
                                                 <span class="left">
                                                     <fa-icon class="with-margin-right" icon="thumbs-up"></fa-icon>
@@ -75,7 +122,9 @@
                                                 </div>
                                             </div>
                                             <div class="video-play-button">
-                                                <fa-icon class="with-margin-right" icon="play-circle" size="3x" [styles]="{'color': 'white'}" (click)="onPlayVideo(video.player.embedHtml)"></fa-icon>
+                                                <fa-icon class="with-margin-right" icon="play-circle" size="3x"
+                                                    [styles]="{'color': 'white'}"
+                                                    (click)="onPlayVideo(video.player.embedHtml)"></fa-icon>
                                             </div>
                                         </div>
                                     </mat-card>

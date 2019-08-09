@@ -73,7 +73,6 @@ export class YoutubeService {
   }
 
   getVideos(ids) {
-    console.log(`${this.base_url}videos?id=${ids.join(',')}&maxResults=${this.max_results}&part=snippet,player,contentDetails,statistics&key=${env.YOUTUBE_API_KEY}`);
     return this.http.get(`${this.base_url}videos?id=${ids.join(',')}&maxResults=${this.max_results}&part=snippet,player,contentDetails,statistics&key=${env.YOUTUBE_API_KEY}`);
   }
 
@@ -81,8 +80,14 @@ export class YoutubeService {
     return this.http.get(`${this.base_url}channels?part=statistics&id=${channelId}&key=${env.YOUTUBE_API_KEY}`);
   }
 
-  fetchChannelVideos(channelId) {
-    return this.http.get(`${this.base_url}videos?part=snippet,contentDetails,player,statistics&chart=mostPopular&maxResults=${this.max_results}&channelId=${channelId}&key=${env.YOUTUBE_API_KEY}`);
+  async fetchChannelVideos(channelId) {
+    let url = `${this.base_url}search?&part=snippet&type=video&chart=mostPopular&maxResults=${this.max_results}&channelId=${channelId}`;
+    const res = await this.http.get(url + `&key=${env.YOUTUBE_API_KEY}`).toPromise();
+    let ids = [];
+    res['items'].forEach((item) => {
+      ids.push(item.id.videoId);
+    });
+    return await this.getVideos(ids).toPromise();
   }
 
   fetchChannelPlaylists(channelId) {

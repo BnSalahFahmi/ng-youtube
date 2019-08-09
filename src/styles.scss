@@ -34,7 +34,6 @@ body{
     position: fixed;
     z-index: 2;
     border: 1px solid #dddfe2;
-    background: #FFF;
     border-left-width: 0px;
     border-right-width: 0px;
 }
@@ -45,6 +44,7 @@ body{
 
 .mat-tab-label {
     border-right: 1px solid #dddfe2;
+    height: 40px !important;
 }
 
 .mat-tab-body {
@@ -53,7 +53,12 @@ body{
 }
 
 .mat-tab-body-wrapper {
-    background: #FFF !important;
+    background: #e9ebee !important;
+    border-width: 0px !important;
+
+    mat-tab-body {
+        border-width: 0px !important;
+    }
 }
 
 .mat-tab-label-content {

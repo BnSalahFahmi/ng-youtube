@@ -44,6 +44,7 @@ export class ChannelItemComponent implements OnInit, AfterViewInit {
   }
 
   onTabClick(event, channelId) {
+    debugger;
     if (event.tab.textLabel == "Home") {
       this.store.dispatch(new youtubeActions.LoadChannelStatistics(channelId));
     } else if (event.tab.textLabel == "Videos") {
