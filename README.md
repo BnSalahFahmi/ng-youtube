@@ -6,27 +6,27 @@
 
 * Dashboard
 <p align="center">
-    <img src="/assets/img/dashboard.png" alt="Dashboard" align="center">
+    <img src="src/assets/img/dashboard.png" alt="Dashboard" align="center">
 </p>
 
 * Youtube Channels
 <p align="center">
-    <img src="/assets/img/channels.png" alt="Channels" align="center">
+    <img src="src/assets/img/channels.png" alt="Channels" align="center">
 </p>
 
 * Youtube Channel Details
 <p align="center">
-    <img src="/assets/img/channel-detail.png" alt="Channel Details" align="center">
+    <img src="src/assets/img/channel-detail.png" alt="Channel Details" align="center">
 </p>
 
 * Youtube Videos
 <p align="center">
-    <img src="/assets/img/videos.png" alt="Videos" align="center">
+    <img src="src/assets/img/videos.png" alt="Videos" align="center">
 </p>
 
 * Youtube Video Player
 <p align="center">
-    <img src="/assets/img/video-player.png" alt="Video Player" align="center">
+    <img src="src/assets/img/video-player.png" alt="Video Player" align="center">
 </p>
 
 ## Prerequisite
