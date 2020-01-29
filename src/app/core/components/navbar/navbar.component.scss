@@ -1,11 +1,12 @@
-mat-drawer-container {
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
-}
+
 
 .mat-toolbar {
-    height: 54px !important;
+    height: 54px !important;    
+    margin-top: -2px;
     overflow-y: hidden;
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    background: #fff;
+    color: #424242;
+    border-bottom: 1px solid #EEE;
 }
 
 .branding {
@@ -13,9 +14,9 @@ mat-drawer-container {
 }
 
 .logo {
-    height: 36px;
-    margin: 0px 4px 3px 0;
-    margin-right: 50px;
+    height: 30px;
+    margin: 6px 4px 3px 0;
+    margin-right: 40px;
 }
 
 .with-margin-right {
@@ -46,4 +47,8 @@ mat-drawer {
     .sidenav {
       display:none;
     }
+}
+
+mat-search-bar {
+    margin-right: 8px;
 }
