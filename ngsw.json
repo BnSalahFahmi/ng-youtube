@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1581289104838,
+  "timestamp": 1581292342522,
   "index": "https://github.com/BnSalahFahmi/ng-youtube/index.html",
   "assetGroups": [
     {
@@ -12,7 +12,7 @@
         "https://github.com/BnSalahFahmi/ng-youtube/4-es2015.983d24609026183c11a8.js",
         "https://github.com/BnSalahFahmi/ng-youtube/favicon.ico",
         "https://github.com/BnSalahFahmi/ng-youtube/index.html",
-        "https://github.com/BnSalahFahmi/ng-youtube/main-es2015.fa0d695aaa60bbe0388a.js",
+        "https://github.com/BnSalahFahmi/ng-youtube/main-es2015.6ae1a59dfbb043428440.js",
         "https://github.com/BnSalahFahmi/ng-youtube/main-es5.371c61df95a89556152c.js",
         "https://github.com/BnSalahFahmi/ng-youtube/polyfills-es2015.27661dfa98f6332c27dc.js",
         "https://github.com/BnSalahFahmi/ng-youtube/polyfills-es5.7f43b971448d2fb49202.js",
@@ -101,8 +101,8 @@
     "https://github.com/BnSalahFahmi/ng-youtube/assets/img/videos.png": "6ff24bc9f5bb71bd96cda7f20da42fbf668eb5b8",
     "https://github.com/BnSalahFahmi/ng-youtube/assets/img/youtube.png": "2bc88df5b5a0f427af0efc14ff50de1592ff588f",
     "https://github.com/BnSalahFahmi/ng-youtube/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "https://github.com/BnSalahFahmi/ng-youtube/index.html": "eba48719ad3ff6432d06698b2cf8ac7cb10013e4",
-    "https://github.com/BnSalahFahmi/ng-youtube/main-es2015.fa0d695aaa60bbe0388a.js": "b3cc78501118f8d25128a1f093e452d90cff8b99",
+    "https://github.com/BnSalahFahmi/ng-youtube/index.html": "04f3dbcbcbcc5d5a19ab8d0af6597052b38b011b",
+    "https://github.com/BnSalahFahmi/ng-youtube/main-es2015.6ae1a59dfbb043428440.js": "27f4859ab04e0894015dec727bb237f516581fee",
     "https://github.com/BnSalahFahmi/ng-youtube/main-es5.371c61df95a89556152c.js": "cb2b52d4fc791cc07e3331f2e8f479f975955fce",
     "https://github.com/BnSalahFahmi/ng-youtube/polyfills-es2015.27661dfa98f6332c27dc.js": "77f974dd2b186031cfc4f4526d96db4efcd39353",
     "https://github.com/BnSalahFahmi/ng-youtube/polyfills-es5.7f43b971448d2fb49202.js": "f84a71ef6c7a788b5fe701bf2405313d7766a66d",
