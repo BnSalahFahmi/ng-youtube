@@ -17,16 +17,13 @@
     </mat-drawer>
 
     <div class="sidenav-content">
-            <div class="toolbar" [style.position]="(stickyHeader$ | async) ? 'fixed' : 'inherit'" [class.mat-elevation-z4]="(stickyHeader$ | async)">
+            <div class="toolbar">
                     <mat-toolbar>
                         <div class="branding">
-                            <img class="logo" src="../../../../assets/img/logo-ng-youtube.png" />
+                            <img class="logo" src="assets/img/logo-ng-youtube.png" />
                             <button class="d-md-none" mat-icon-button (click)="drawer.toggle()">
                                 <fa-icon icon="bars"></fa-icon>
                             </button>
-                            <span routerLink="" class="branding spacer center d-inline d-sm-none">
-                                <img [src]="logo" />
-                            </span>
                             <span class="d-none d-md-inline">
                                 <button mat-button class="nav-button" routerLink="dashboard" routerLinkActive="active">
                                     <fa-icon class="with-margin-right" icon="tachometer-alt"></fa-icon>
