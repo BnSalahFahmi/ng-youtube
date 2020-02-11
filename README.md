@@ -2,39 +2,17 @@
 
 > Youtube player app built with Angular 8 and NGRX that allows to search and view channels and start youtube videos on a video player using the [`YouTube v3 API`](https://developers.google.com/youtube/v3/).
 
-## Screenshots
+## Demo
 
-* Dashboard
-<p align="center">
-    <img src="src/assets/img/dashboard.png" alt="Dashboard" align="center">
-</p>
+A live [demo](https://bnsalahfahmi.github.io/ng-youtube) of ng-youtube is hosted on Github Pages.
 
-* Youtube Channels
-<p align="center">
-    <img src="src/assets/img/channels.png" alt="Channels" align="center">
-</p>
-
-* Youtube Channel Details
-<p align="center">
-    <img src="src/assets/img/channel-detail.png" alt="Channel Details" align="center">
-</p>
-
-* Youtube Videos
-<p align="center">
-    <img src="src/assets/img/videos.png" alt="Videos" align="center">
-</p>
-
-* Youtube Video Player
-<p align="center">
-    <img src="src/assets/img/video-player.png" alt="Video Player" align="center">
-</p>
+![alt text](src/assets/img/preview.png "Channels preview")
 
 ## Prerequisite
 * Nodejs v10+
 * yarnpkg (optional)
 
 ## Before you start
-
 
  1. You need a [Google Account](https://www.google.com/accounts/NewAccount) to access the Google APIs Console, request an API key, and register your application.
  2. [Register your application](https://console.developers.google.com/project) with Google so that it can submit API requests:
