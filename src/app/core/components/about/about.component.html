@@ -1,0 +1,57 @@
+<div class="dashboard-container container-fluid">
+    <div class="cards-container">
+        <div class="row">
+            <label class="label-info float-left">
+                <fa-icon class="with-margin-right globe-europe" icon="globe-europe"></fa-icon> Dependencies & Features
+            </label>
+        </div>
+        <div class="">
+            <div class="row  pt-1 mb-2 main-container">
+                <div class="col-12 col-md-6 mb-2">
+                    <blockquote class="blockquote bq-primary" [ngClass]="routeAnimationsElements">
+                        <div class="row">
+                            <h5 class="blockquote-title-dep"><fa-icon class="laptop" icon="laptop"></fa-icon> Dependencies</h5>
+                        </div>
+                        <div class="row ml-4" *ngFor="let item of dependencies.frontend">
+                            <span class="text-label">
+                                <fa-icon class="text-info mr-2 small-icon" icon="square"></fa-icon> {{item.name }}
+                            </span>
+                        </div>
+                    </blockquote>
+                </div>
+
+                <div class="col-12 col-md-6 text-center mb-2">
+                    <blockquote class="blockquote bq-primary" [ngClass]="routeAnimationsElements">
+                        <div class="row">
+                            <h5 class="blockquote-title-feat"><fa-icon class="laptop" icon="laptop"></fa-icon> Features</h5>
+                        </div>
+                        <div class="row ml-4">
+                            <div class="col">
+                                <table
+                                    class="table table-hover table-striped table-bordered table-responsive-md table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th class="h6 t-bold">Name</th>
+                                            <th class="h6 t-bold">Tutorial</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of features.frontend">
+                                            <td class="text-label">{{ item.name }}</td>
+                                            <td class="">
+                                                <a *ngIf="item.tutorial!=null" href="{{ item.tutorial }}"
+                                                    style="cursor: pointer">
+                                                    <fa-icon class="text-info small-icon" icon="desktop"></fa-icon>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

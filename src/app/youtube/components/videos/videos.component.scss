@@ -36,7 +36,6 @@
     width: 90%;
     top: 126px;
     color: #FFF;
-    text-align: center;
 }
 
 .left {
@@ -47,7 +46,12 @@
 
 .center {
     font-size: 12px;
-    margin-left: -15px;
+    font-size: 12px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    top: 50%;
 }
 
 .right {
@@ -65,6 +69,7 @@
         cursor: pointer !important;
         .video-play-button {
             display: block !important;
+            opacity: 1;
         }
     }
 }
@@ -87,11 +92,11 @@
 
 .video-play-button {
     position: absolute;
-    left: 43%;
-    top: 36%;
-    right: 0;
-    bottom: 0;
-    margin: auto;
+    left: 50%;
+    top: 50%;
     cursor: pointer;
-    display: none;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-color: transparent;
+    opacity: .5;
 }
