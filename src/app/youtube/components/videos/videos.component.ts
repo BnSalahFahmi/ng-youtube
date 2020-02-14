@@ -18,9 +18,10 @@ export class VideosComponent implements OnInit {
 
   videos$: Observable<any>;
   loading$: Observable<boolean>;
-  selectedVideo;
+  selectedVideo: string;
+  showVideoPlayer = false;
 
-  constructor(private store: Store<fromYoutube.State>, private youtubeService : YoutubeService, public sanitizer: DomSanitizer) {
+  constructor(private store: Store<fromYoutube.State>, private youtubeService: YoutubeService, public sanitizer: DomSanitizer) {
     this.videos$ = this.store.select(fromYoutube.getVideos);
     this.loading$ = this.store.select(fromYoutube.getLoading);
   }
@@ -37,6 +38,12 @@ export class VideosComponent implements OnInit {
 
   onPlayVideo(embedHtml: string) {
     this.selectedVideo = this.getIFrameSrc(embedHtml);
+    this.showVideoPlayer = true;
+  }
+
+  closeVideoPlayer() {
+    this.selectedVideo = undefined;
+    this.showVideoPlayer = false;
   }
 
 }
