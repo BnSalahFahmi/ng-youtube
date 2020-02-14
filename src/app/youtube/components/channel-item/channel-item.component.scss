@@ -123,10 +123,9 @@ p {
     height: 30px;
     background-color: rgba(0,0,0,.45);
     line-height: 2.5;
-    width: 89.5%;
+    width: 90%;
     top: 126px;
     color: #FFF;
-    text-align: center;
 }
 
 .left {
@@ -137,7 +136,12 @@ p {
 
 .center {
     font-size: 12px;
-    margin-left: -15px;
+    font-size: 12px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    top: 50%;
 }
 
 .right {
@@ -155,6 +159,7 @@ p {
         cursor: pointer !important;
         .video-play-button {
             display: block !important;
+            opacity: 1;
         }
     }
 }
@@ -178,12 +183,13 @@ p {
 
 .video-play-button {
     position: absolute;
-    left: 42%;
-    top: 35%;
-    right: 0;
-    bottom: 0;
-    margin: auto;
+    left: 50%;
+    top: 50%;
     cursor: pointer;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-color: transparent;
+    opacity: .5;
 }
 
 .tabs-container {

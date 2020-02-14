@@ -13,7 +13,7 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/shared/animations/route.animatio
   templateUrl: './channel-item.component.html',
   styleUrls: ['./channel-item.component.scss']
 })
-export class ChannelItemComponent implements OnInit, AfterViewInit {
+export class ChannelItemComponent {
 
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
@@ -26,7 +26,8 @@ export class ChannelItemComponent implements OnInit, AfterViewInit {
   subscriberCount: number = 0;
   videoCount: number = 0;
   viewCount: number = 0;
-  selectedVideo;
+  selectedVideo: string;
+  showVideoPlayer = false;
 
   constructor(private store: Store<fromYoutube.State>, private youtubeService: YoutubeService, private route: ActivatedRoute, public sanitizer: DomSanitizer) {
     this.channel$ = this.store.select(fromYoutube.getSelectedChannel);
@@ -35,22 +36,11 @@ export class ChannelItemComponent implements OnInit, AfterViewInit {
     this.playlists$ = this.store.select(fromYoutube.getSelectedChannelPlaylists);
   }
 
-  ngOnInit() {
-    
-  }
-
-  ngAfterViewInit() {
-    
-  }
-
   onTabClick(event, channelId) {
-    debugger;
     if (event.tab.textLabel == "Home") {
       this.store.dispatch(new youtubeActions.LoadChannelStatistics(channelId));
     } else if (event.tab.textLabel == "Videos") {
       this.store.dispatch(new youtubeActions.LoadChannelVideos(channelId));
-    } else if (event.tab.textLabel == "Playlists") {
-      this.store.dispatch(new youtubeActions.LoadChannelPlaylists(channelId));
     }
   }
 
@@ -61,6 +51,13 @@ export class ChannelItemComponent implements OnInit, AfterViewInit {
 
   onPlayVideo(embedHtml: string) {
     this.selectedVideo = this.getIFrameSrc(embedHtml);
+    this.showVideoPlayer = true;
   }
+
+  closeVideoPlayer() {
+    this.selectedVideo = undefined;
+    this.showVideoPlayer = false;
+  }
+
 
 }

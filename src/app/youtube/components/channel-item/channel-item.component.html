@@ -1,4 +1,5 @@
-<video-player [embedHTML]="selectedVideo"></video-player>
+<video-player class="modal-video-player" [embedHTML]="selectedVideo" [isOpen]="showVideoPlayer"
+    (handleClose)="closeVideoPlayer()"></video-player>
 <div class="" *ngIf="(channel$ | async) as channel">
     <img class="cover-photo" src="{{channel.data.brandingSettings.image.bannerImageUrl}}" />
     <div class="profile">
@@ -46,20 +47,6 @@
                                 <fa-icon class="with-margin-right" icon="tachometer-alt"></fa-icon>
                                 Home
                             </ng-template>
-                            <!-- <span class="label-info">
-                                <fa-icon class="with-margin-right" icon="thumbs-up"></fa-icon> Description :
-                            </span>
-                            <p class="empty" *ngIf="channel.data.snippet.description == ''">
-                                    No description found
-                            </p>
-                            <p>
-                                {{channel.data.snippet.description}}
-                            </p>
-                            <hr>
-                            <span class="label-info">
-                                <fa-icon class="with-margin-right" icon="video"></fa-icon> Top 5 videos :
-                            </span> -->
-
                             <div class="stat-block">
                                 <label class="label-info">
                                     <fa-icon class="with-margin-right globe-europe" icon="globe-europe"></fa-icon>
@@ -122,9 +109,8 @@
                                                 </div>
                                             </div>
                                             <div class="video-play-button">
-                                                <fa-icon class="with-margin-right" icon="play-circle" size="3x"
-                                                    [styles]="{'color': 'white'}"
-                                                    (click)="onPlayVideo(video.player.embedHtml)"></fa-icon>
+                                                <img src="assets/img/play.png"
+                                                    (click)="onPlayVideo(video.player.embedHtml)">
                                             </div>
                                         </div>
                                     </mat-card>

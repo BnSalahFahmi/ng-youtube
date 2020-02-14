@@ -1,4 +1,6 @@
-
+.mat-drawer-container {
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+}
 
 .mat-toolbar {
     height: 54px !important;    
@@ -8,6 +10,7 @@
     color: #424242;
     border-bottom: 1px solid #EEE;
 }
+
 
 .branding {
     flex: 1 1 auto;
@@ -55,4 +58,9 @@ mat-search-bar {
 
 a:hover {
     color: #424242 !important;
+}
+
+::ng-deep .mat-tab-body-wrapper {
+    background: #ffffff !important;
+    border-left: 1px solid #e9ebee !important;
 }
