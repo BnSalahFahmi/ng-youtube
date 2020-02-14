@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1581397862653,
+  "timestamp": 1581641408824,
   "index": "https://bnsalahfahmi.github.io/ng-youtube/index.html",
   "assetGroups": [
     {
@@ -8,16 +8,16 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "https://bnsalahfahmi.github.io/ng-youtube/3-es5.774daaa9ade45b7981c9.js",
-        "https://bnsalahfahmi.github.io/ng-youtube/4-es2015.422fd1e27b6ad6bd06b7.js",
+        "https://bnsalahfahmi.github.io/ng-youtube/3-es5.915f39416483b96ea834.js",
+        "https://bnsalahfahmi.github.io/ng-youtube/4-es2015.47eb9905b53b39f01eec.js",
         "https://bnsalahfahmi.github.io/ng-youtube/favicon.ico",
         "https://bnsalahfahmi.github.io/ng-youtube/index.html",
-        "https://bnsalahfahmi.github.io/ng-youtube/main-es2015.0b541997592eae61abe6.js",
-        "https://bnsalahfahmi.github.io/ng-youtube/main-es5.4d755962f8bf2330bba9.js",
+        "https://bnsalahfahmi.github.io/ng-youtube/main-es2015.435b3a45e25fc79380fc.js",
+        "https://bnsalahfahmi.github.io/ng-youtube/main-es5.b5b4c5e7b4e6b7c650bb.js",
         "https://bnsalahfahmi.github.io/ng-youtube/polyfills-es2015.27661dfa98f6332c27dc.js",
         "https://bnsalahfahmi.github.io/ng-youtube/polyfills-es5.7f43b971448d2fb49202.js",
-        "https://bnsalahfahmi.github.io/ng-youtube/runtime-es2015.e1f6bd2fdffa5d455d83.js",
-        "https://bnsalahfahmi.github.io/ng-youtube/runtime-es5.7b9ce9f7ae6b48f541d6.js",
+        "https://bnsalahfahmi.github.io/ng-youtube/runtime-es2015.fa18b271f9caeea14226.js",
+        "https://bnsalahfahmi.github.io/ng-youtube/runtime-es5.15c85142ef274a44aa3b.js",
         "https://bnsalahfahmi.github.io/ng-youtube/styles.fa7840e9ae9731f70ca7.css"
       ],
       "patterns": [
@@ -55,6 +55,7 @@
         "https://bnsalahfahmi.github.io/ng-youtube/assets/img/ngrx.png",
         "https://bnsalahfahmi.github.io/ng-youtube/assets/img/photo.jpg",
         "https://bnsalahfahmi.github.io/ng-youtube/assets/img/play.png",
+        "https://bnsalahfahmi.github.io/ng-youtube/assets/img/preview.png",
         "https://bnsalahfahmi.github.io/ng-youtube/assets/img/video-player.png",
         "https://bnsalahfahmi.github.io/ng-youtube/assets/img/videos.png",
         "https://bnsalahfahmi.github.io/ng-youtube/assets/img/youtube.png"
@@ -75,8 +76,8 @@
     }
   ],
   "hashTable": {
-    "https://bnsalahfahmi.github.io/ng-youtube/3-es5.774daaa9ade45b7981c9.js": "280a522570b9788678cf32226287c55d9c0e5089",
-    "https://bnsalahfahmi.github.io/ng-youtube/4-es2015.422fd1e27b6ad6bd06b7.js": "950fdabb8fd1fefc2089f556fba5f701387017a4",
+    "https://bnsalahfahmi.github.io/ng-youtube/3-es5.915f39416483b96ea834.js": "6de25349b82b4414d28301585a9080ae87f12712",
+    "https://bnsalahfahmi.github.io/ng-youtube/4-es2015.47eb9905b53b39f01eec.js": "5d38a676fb8f03216d911d19472be23aee80ad64",
     "https://bnsalahfahmi.github.io/ng-youtube/assets/css/buttons.scss": "9b7016d8ca64c1e73b547039891d64d8711ae8ec",
     "https://bnsalahfahmi.github.io/ng-youtube/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "https://bnsalahfahmi.github.io/ng-youtube/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
@@ -103,17 +104,18 @@
     "https://bnsalahfahmi.github.io/ng-youtube/assets/img/ngrx.png": "0264955192e7098d3492d5e59e1eaced04162c52",
     "https://bnsalahfahmi.github.io/ng-youtube/assets/img/photo.jpg": "76e680a360c78bc12881f491794f1eeee87ff9cf",
     "https://bnsalahfahmi.github.io/ng-youtube/assets/img/play.png": "2eaf642e78d9b648479cd07f2ed9947adb0a09d8",
+    "https://bnsalahfahmi.github.io/ng-youtube/assets/img/preview.png": "2f71d82ed0eb8bef8aee6c1050c86da93e120a33",
     "https://bnsalahfahmi.github.io/ng-youtube/assets/img/video-player.png": "bc7fcb649a17c28092e48925b070f820b4b17ebe",
     "https://bnsalahfahmi.github.io/ng-youtube/assets/img/videos.png": "6ff24bc9f5bb71bd96cda7f20da42fbf668eb5b8",
     "https://bnsalahfahmi.github.io/ng-youtube/assets/img/youtube.png": "2bc88df5b5a0f427af0efc14ff50de1592ff588f",
     "https://bnsalahfahmi.github.io/ng-youtube/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "https://bnsalahfahmi.github.io/ng-youtube/index.html": "20191255ecbd18c9b872aa4ec66a0f42be3b54fa",
-    "https://bnsalahfahmi.github.io/ng-youtube/main-es2015.0b541997592eae61abe6.js": "111fa7a55188f133aa17e1f29a0d0381b0a34e08",
-    "https://bnsalahfahmi.github.io/ng-youtube/main-es5.4d755962f8bf2330bba9.js": "1ddbc306b4994f4d2b44369e1a7b7fef3124d29a",
+    "https://bnsalahfahmi.github.io/ng-youtube/index.html": "a7cdd1cfdb45bac5e5b9f4d26b01fcb0410b7979",
+    "https://bnsalahfahmi.github.io/ng-youtube/main-es2015.435b3a45e25fc79380fc.js": "ee051208239bddaaf7d5c0f913fec8d9802ecaa8",
+    "https://bnsalahfahmi.github.io/ng-youtube/main-es5.b5b4c5e7b4e6b7c650bb.js": "abc22812bc08ccbca5ed9caded6864d3215ce470",
     "https://bnsalahfahmi.github.io/ng-youtube/polyfills-es2015.27661dfa98f6332c27dc.js": "77f974dd2b186031cfc4f4526d96db4efcd39353",
     "https://bnsalahfahmi.github.io/ng-youtube/polyfills-es5.7f43b971448d2fb49202.js": "f84a71ef6c7a788b5fe701bf2405313d7766a66d",
-    "https://bnsalahfahmi.github.io/ng-youtube/runtime-es2015.e1f6bd2fdffa5d455d83.js": "88a00014e1dc7bb1681b5fef4fc8dc3fe8703fb3",
-    "https://bnsalahfahmi.github.io/ng-youtube/runtime-es5.7b9ce9f7ae6b48f541d6.js": "4d69ed9dd172ee7d891498e26048cc15d3cc384a",
+    "https://bnsalahfahmi.github.io/ng-youtube/runtime-es2015.fa18b271f9caeea14226.js": "e7cc0a14e00fb522d3d01da6330c4e48b9774edd",
+    "https://bnsalahfahmi.github.io/ng-youtube/runtime-es5.15c85142ef274a44aa3b.js": "9cb8524e5119f34ba7cfbaee7351334155ea24d7",
     "https://bnsalahfahmi.github.io/ng-youtube/styles.fa7840e9ae9731f70ca7.css": "de9cef47ee254e8d8e0eff98581d61df9040e276"
   },
   "navigationUrls": [
